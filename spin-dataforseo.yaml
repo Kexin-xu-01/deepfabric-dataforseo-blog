@@ -1,0 +1,280 @@
+#####################################################################
+# Spin DataForSEO Tools Dataset Configuration
+#####################################################################
+# This configuration demonstrates using DataForSEO MCP tools via Spin
+# for generating synthetic SEO assistant training data.
+#
+# Prerequisites:
+#   1. Start the Spin service:
+#      cd tools-sdk
+#      spin build && spin up
+#
+#   2. Import tools from DataForSEO MCP server:
+#      deepfabric import-tools --transport stdio \
+#        --command "npx dataforseo-mcp" \
+#        --spin http://localhost:3000
+#
+#   3. Load mock data for realistic responses:
+#      cd examples/tools-sdk-examples/dataforseo
+#      ./load-dataforseo-mock-data.sh
+#
+#   4. Run deepfabric:
+#      deepfabric generate examples/tools-sdk-examples/dataforseo/spin-dataforseo.yaml
+#####################################################################
+
+# Topic generation - creates a tree of SEO and digital marketing topics
+topics:
+  prompt: "Tasks for a SEO assistant that helps with SEO strategies and digital marketing using the DataForSEO tools."
+  mode: graph
+  system_prompt: ""
+  depth: 5
+  degree: 10
+  max_concurrent: 3
+  save_as: "dataforseo-topic-graph.jsonl"
+
+  llm:
+    provider: "gemini"
+    model: "gemini-2.5-flash"
+    temperature: 0.8
+
+# Data generation with DataForSEO tool execution
+generation:
+  system_prompt: |
+    You are an expert SEO and digital marketing assistant helping businesses improve their online presence.
+    You have access to comprehensive DataForSEO tools across multiple categories.
+
+    AI OPTIMIZATION TOOLS:
+    - ai_optimization_keyword_data_search_volume: Get AI LLM search volume for keywords
+    - ai_optimization_llm_response: Get responses from AI models (Claude, ChatGPT, Gemini, Perplexity)
+    - ai_optimization_llm_mentions_search: Track LLM mentions of keywords/domains
+    - ai_optimization_llm_mentions_aggregated_metrics: Get aggregated LLM mention metrics
+    - ai_optimization_llm_mentions_top_domains: Find top domains mentioned by LLMs
+    - ai_optimization_llm_mentions_top_pages: Find top pages mentioned by LLMs
+
+    SERP (Search Engine Results) TOOLS:
+    - serp_organic_live_advanced: Get Google organic search results with People Also Ask
+    - serp_locations: Get available locations for SERP searches
+    - serp_youtube_organic_live_advanced: Get YouTube search results
+    - serp_youtube_video_info_live_advanced: Get detailed YouTube video information
+    - serp_youtube_video_comments_live_advanced: Analyze YouTube video comments
+
+    KEYWORD RESEARCH TOOLS:
+    - keywords_data_google_ads_search_volume: Get Google Ads search volume and CPC data
+    - keywords_data_google_trends_explore: Analyze keyword trends over time
+    - keywords_data_dataforseo_trends_demography: Get demographic breakdown for keywords
+    - keywords_data_dataforseo_trends_subregion_interests: Get geographic interest data
+    - dataforseo_labs_google_keyword_ideas: Generate keyword ideas from seed keywords
+    - dataforseo_labs_google_related_keywords: Find related keywords
+    - dataforseo_labs_google_keyword_suggestions: Get long-tail keyword suggestions
+    - dataforseo_labs_bulk_keyword_difficulty: Analyze keyword difficulty scores
+    - dataforseo_labs_search_intent: Detect search intent (informational, navigational, commercial, transactional)
+
+    COMPETITOR ANALYSIS TOOLS:
+    - dataforseo_labs_google_ranked_keywords: See which keywords a domain ranks for
+    - dataforseo_labs_google_competitors_domain: Find competitor domains
+    - dataforseo_labs_google_serp_competitors: Analyze competitors for specific keywords
+    - dataforseo_labs_google_domain_rank_overview: Get domain ranking distribution
+    - dataforseo_labs_google_domain_intersection: Find keywords shared by multiple domains
+
+    BACKLINK ANALYSIS TOOLS:
+    - backlinks_backlinks: Get backlink profile for a domain
+    - backlinks_referring_domains: Analyze referring domains
+    - backlinks_anchors: Analyze anchor text distribution
+    - backlinks_bulk_ranks: Get domain authority/rank scores
+    - backlinks_bulk_spam_score: Check spam scores for domains
+    - backlinks_competitors: Find backlink competitors
+    - backlinks_timeseries_summary: Track backlink growth over time
+
+    ON-PAGE SEO TOOLS:
+    - on_page_content_parsing: Parse page content and structure
+    - on_page_instant_pages: Get page optimization scores and recommendations
+    - on_page_lighthouse: Run Google Lighthouse performance analysis
+
+    CONTENT ANALYSIS TOOLS:
+    - content_analysis_search: Search for content citations with sentiment analysis
+    - content_analysis_summary: Get aggregated content metrics and sentiment
+    - content_analysis_phrase_trends: Track phrase trends and sentiment over time
+
+    BUSINESS DATA TOOLS:
+    - business_data_business_listings_search: Search Google Maps business listings
+
+    DOMAIN ANALYTICS TOOLS:
+    - domain_analytics_whois_overview: Get WHOIS data with SEO metrics
+    - domain_analytics_technologies_domain_technologies: Detect technologies used on a domain
+
+    WORKFLOW GUIDELINES:
+    1. For keyword research: Start with keyword ideas, check volume/difficulty, analyze intent
+    2. For competitor analysis: Find competitors, analyze their rankings, check backlinks
+    3. For content optimization: Parse on-page content, run Lighthouse, get recommendations
+    4. For AI optimization: Track LLM mentions, monitor AI search volume trends
+    5. Always provide actionable insights based on the data retrieved
+    6. Use multiple tools together for comprehensive analysis
+    7. Consider location and language settings for accurate results
+
+  conversation:
+    type: cot
+    reasoning_style: agent
+    agent_mode: single_turn
+
+  tools:
+    # Spin service endpoint
+    spin_endpoint: "http://localhost:3000"
+    # Load tool definitions from mock endpoint
+    tools_endpoint: "http://localhost:3000/mock/list-tools"
+    tool_execute_path: "/mock/execute"
+
+    # Component-based routing: 'mock' routes to /mock/execute
+    components:
+      mock:
+        # AI Optimization tools
+        - ai_optimization_keyword_data_locations_and_languages
+        - ai_optimization_keyword_data_search_volume
+        - ai_optimization_llm_models
+        - ai_optimization_llm_response
+        - ai_optimization_llm_mentions_filters
+        - ai_optimization_llm_mentions_locations_and_languages
+        - ai_optimization_llm_mentions_search
+        - ai_optimization_llm_mentions_aggregated_metrics
+        - ai_optimization_llm_mentions_cross_aggregated_metrics
+        - ai_optimization_llm_mentions_top_domains
+        - ai_optimization_llm_mentions_top_pages
+        # SERP tools
+        - serp_organic_live_advanced
+        - serp_locations
+        - serp_youtube_locations
+        - serp_youtube_organic_live_advanced
+        - serp_youtube_video_info_live_advanced
+        - serp_youtube_video_comments_live_advanced
+        - serp_youtube_video_subtitles_live_advanced
+        # Keyword research tools
+        - keywords_data_google_ads_search_volume
+        - keywords_data_dataforseo_trends_demography
+        - keywords_data_dataforseo_trends_subregion_interests
+        - keywords_data_dataforseo_trends_explore
+        - keywords_data_google_trends_categories
+        - keywords_data_google_trends_explore
+        # On-page tools
+        - on_page_content_parsing
+        - on_page_instant_pages
+        - on_page_lighthouse
+        # DataForSEO Labs tools
+        - dataforseo_labs_google_ranked_keywords
+        - dataforseo_labs_google_competitors_domain
+        - dataforseo_labs_google_domain_rank_overview
+        - dataforseo_labs_google_keyword_ideas
+        - dataforseo_labs_google_related_keywords
+        - dataforseo_labs_google_keyword_suggestions
+        - dataforseo_labs_google_historical_serp
+        - dataforseo_labs_google_serp_competitors
+        - dataforseo_labs_bulk_keyword_difficulty
+        - dataforseo_labs_google_subdomains
+        - dataforseo_labs_google_keyword_overview
+        - dataforseo_labs_google_top_searches
+        - dataforseo_labs_search_intent
+        - dataforseo_labs_google_keywords_for_site
+        - dataforseo_labs_google_domain_intersection
+        - dataforseo_labs_google_historical_rank_overview
+        - dataforseo_labs_google_page_intersection
+        - dataforseo_labs_bulk_traffic_estimation
+        - dataforseo_labs_available_filters
+        - dataforseo_labs_google_historical_keyword_data
+        - dataforseo_labs_google_relevant_pages
+        # Backlinks tools
+        - backlinks_backlinks
+        - backlinks_anchors
+        - backlinks_bulk_backlinks
+        - backlinks_bulk_new_lost_referring_domains
+        - backlinks_bulk_new_lost_backlinks
+        - backlinks_bulk_ranks
+        - backlinks_bulk_referring_domains
+        - backlinks_bulk_spam_score
+        - backlinks_competitors
+        - backlinks_domain_intersection
+        - backlinks_domain_pages_summary
+        - backlinks_domain_pages
+        - backlinks_page_intersection
+        - backlinks_referring_domains
+        - backlinks_referring_networks
+        - backlinks_timeseries_new_lost_summary
+        - backlinks_timeseries_summary
+        - backlinks_bulk_pages_summary
+        - backlinks_available_filters
+        # Business data tools
+        - business_data_business_listings_search
+        # Domain analytics tools
+        - domain_analytics_whois_overview
+        - domain_analytics_whois_available_filters
+        - domain_analytics_technologies_domain_technologies
+        - domain_analytics_technologies_available_filters
+        # Content analysis tools
+        - content_analysis_search
+        - content_analysis_summary
+        - content_analysis_phrase_trends
+
+    max_per_query: 5
+    strict: false
+
+    # ReAct loop configuration
+    max_agent_steps: 8
+
+  max_retries: 3
+
+  llm:
+    provider: "gemini"
+    model: "gemini-2.5-flash"
+    temperature: 0.4
+
+# Output configuration
+output:
+  system_prompt: |
+    You are an expert SEO and digital marketing assistant that helps businesses improve their online presence.
+    You have access to the following tool categories:
+
+    AI Optimization:
+    - Track keyword usage in AI LLMs (ChatGPT, Claude, Gemini, Perplexity)
+    - Monitor LLM mentions of brands and keywords
+    - Analyze AI search volume trends
+
+    SERP Analysis:
+    - Get Google and YouTube search results
+    - Analyze People Also Ask sections
+    - Track video performance and comments
+
+    Keyword Research:
+    - Generate keyword ideas and suggestions
+    - Analyze search volume, CPC, and competition
+    - Determine search intent and keyword difficulty
+    - Track keyword trends and demographics
+
+    Competitor Analysis:
+    - Find competing domains and their rankings
+    - Analyze competitor keyword strategies
+    - Compare domain metrics and backlink profiles
+
+    Backlink Analysis:
+    - Analyze backlink profiles and referring domains
+    - Track anchor text distribution
+    - Monitor domain authority and spam scores
+    - Detect backlink growth patterns
+
+    On-Page SEO:
+    - Parse page content and structure
+    - Get optimization recommendations
+    - Run Lighthouse performance audits
+
+    Content Analysis:
+    - Track content citations and mentions
+    - Analyze sentiment across domains
+    - Monitor phrase trends over time
+
+    When given a task:
+    1. Analyze the SEO or marketing goal
+    2. Select the most appropriate tools for comprehensive analysis
+    3. Execute tool calls to gather relevant data
+    4. Provide actionable insights and recommendations
+    5. Suggest next steps for optimization
+
+  include_system_message: false
+  num_samples: 10
+  batch_size: 2
+  save_as: "dataforseo-dataset-graph.jsonl"

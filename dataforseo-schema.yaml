@@ -1,0 +1,4445 @@
+tools:
+- name: ai_optimization_keyword_data_locations_and_languages
+  description: Utility tool for ai_keyword_data_search_volume to get list of availible
+    locations and languages
+  parameters: []
+  returns: ''
+  category: general
+  component: null
+- name: ai_optimization_keyword_data_search_volume
+  description: This endpoint provides search volume data for your target keywords,
+    reflecting their estimated usage in AI LLMs
+  parameters:
+  - name: keywords
+    type: list
+    description: 'Keywords. The maximum number of keywords you can specify: 1000'
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location, example: ''United Kingdom'', ''United
+      States'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: Search engine language code (e.g., 'en')
+    required: true
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: ai_optimization_llm_models
+  description: Utility tool for ai_optimization_llm_response to get list of availible
+    locations and languages
+  parameters:
+  - name: llm_type
+    type: str
+    description: 'type of llm. Must be one of: ''claude'', ''gemini'', ''chat_gpt'',
+      ''perplexity'''
+    required: true
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: ai_optimization_llm_response
+  description: This endpoint allows you to retrieve structured responses from a specific
+    AI model, based on the input parameters
+  parameters:
+  - name: llm_type
+    type: str
+    description: 'type of llm. Must be one of: ''claude'', ''gemini'', ''chat_gpt'',
+      ''perplexity'''
+    required: true
+    default: ''
+  - name: user_prompt
+    type: str
+    description: Prompt for the AI model. The question or task you want to send to
+      the AI model. You can specify up to 500 characters in the user_prompt field
+    required: true
+    default: ''
+  - name: model_name
+    type: str
+    description: name of the AI model. consists of the actual model name and version
+      name. if not sure which model to use, first call the ai_optimization_llm_models
+      tool to get list of available models for the specified llm_type
+    required: true
+    default: ''
+  - name: temperature
+    type: float
+    description: randomness of the AI response optional field higher values make output
+      more diverse; lower values make output more focused;
+    required: false
+    default: ''
+  - name: top_p
+    type: float
+    description: diversity of the AI response, optional field, controls diversity
+      of the response by limiting token selection;
+    required: false
+    default: ''
+  - name: web_search
+    type: bool
+    description: enable web search for current information. When enabled, the AI model
+      can access and cite current web information;
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: ai_optimization_llm_mentions_filters
+  description: This endpoint provides all the necessary information about filters
+    that can be used with AI Optimization LLM Mentions API endpoints
+  parameters: []
+  returns: ''
+  category: general
+  component: null
+- name: ai_optimization_llm_mentions_locations_and_languages
+  description: Utility tool for ai_llm_mentions to get list of available locations
+    and languages
+  parameters: []
+  returns: ''
+  category: general
+  component: null
+- name: ai_optimization_llm_mentions_search
+  description: This endpoint provides aggregated LLM mentions metrics grouped by the
+    most frequently mentioned pages for the specified target
+  parameters:
+  - name: target
+    type: list
+    description: 'Array of target objects to search for LLM mentions. Each object
+      must contain either ''domain'' or ''keyword''. Maximum number of targets: 1000'
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location, example: ''United Kingdom'', ''United
+      States'''
+    required: false
+    default: ''
+  - name: language_code
+    type: str
+    description: Search engine language code (e.g., 'en')
+    required: false
+    default: ''
+  - name: platform
+    type: str
+    description: Platform to search for LLM mentions
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n   you\
+      \ should set a logical operator and, or between the conditions\n   the following\
+      \ operators are supported:\n   regex, not_regex, <, <=, >, >=, =, <>, in, not_in,\
+      \ match, not_match, ilike, not_ilike, like, not_like\n   you can use the % operator\
+      \ with like and not_like, as well as ilike and not_ilike to match any string\
+      \ of zero or more characters\n   merge operator must be a string and connect\
+      \ two other arrays, availible values: or, and.\n   example:\n[\"ai_search_volume\"\
+      ,\">\",\"1000\"]\nThe full list of possible filters is available in 'ai_optimization_llm_mentions_filters'\
+      \ tool"
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "resuresults sorting rules\noptional field\nyou can use the same\
+      \ values as in the filters array to sort the results\npossible sorting types:\n\
+      asc \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"ai_search_volume,desc\"]\nnote that you can set\
+      \ no more than three sorting rules in a single request\nyou should use a comma\
+      \ to separate several sorting rules\nexample:\n[\"ai_search_volume,desc\"]\n\
+      The full list of possible orders is available in 'ai_optimization_llm_mentions_filters'\
+      \ tool"
+    required: false
+    default: ''
+  - name: limit
+    type: float
+    description: Number of results to return. Default is 10, maximum is 1000.
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: ai_optimization_llm_mentions_aggregated_metrics
+  description: This endpoint provides aggregated metrics for mentions of the keywords
+    or domains specified in the target array of the request.
+  parameters:
+  - name: target
+    type: list
+    description: 'Array of target objects to search for LLM mentions. Each object
+      must contain either ''domain'' or ''keyword''. Maximum number of targets: 1000'
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location, example: ''United Kingdom'', ''United
+      States'''
+    required: false
+    default: ''
+  - name: language_code
+    type: str
+    description: Search engine language code (e.g., 'en')
+    required: false
+    default: ''
+  - name: platform
+    type: str
+    description: Platform to search for LLM mentions
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n   you\
+      \ should set a logical operator and, or between the conditions\n   the following\
+      \ operators are supported:\n   regex, not_regex, <, <=, >, >=, =, <>, in, not_in,\
+      \ match, not_match, ilike, not_ilike, like, not_like\n   you can use the % operator\
+      \ with like and not_like, as well as ilike and not_ilike to match any string\
+      \ of zero or more characters\n   merge operator must be a string and connect\
+      \ two other arrays, availible values: or, and.\n   example:\n[\"ai_search_volume\"\
+      ,\">\",\"1000\"]\nThe full list of possible filters is available in 'ai_optimization_llm_mentions_filters'\
+      \ tool"
+    required: false
+    default: ''
+  - name: internal_list_limit
+    type: float
+    description: Internal parameter to limit the number of items processed. Not exposed
+      to end-users.
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: ai_optimization_llm_mentions_cross_aggregated_metrics
+  description: This endpoint provides aggregated metrics grouped by custom keys for
+    mentions of the keywords or domains specified in the target array of the request
+  parameters:
+  - name: targets
+    type: list
+    description: array of objects containing target entities with aggregation keys.
+      you can specify up to 10, but not less than 2
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location, example: ''United Kingdom'', ''United
+      States'''
+    required: false
+    default: ''
+  - name: language_code
+    type: str
+    description: Search engine language code (e.g., 'en')
+    required: false
+    default: ''
+  - name: platform
+    type: str
+    description: Platform to search for LLM mentions
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n   you\
+      \ should set a logical operator and, or between the conditions\n   the following\
+      \ operators are supported:\n   regex, not_regex, <, <=, >, >=, =, <>, in, not_in,\
+      \ match, not_match, ilike, not_ilike, like, not_like\n   you can use the % operator\
+      \ with like and not_like, as well as ilike and not_ilike to match any string\
+      \ of zero or more characters\n   merge operator must be a string and connect\
+      \ two other arrays, availible values: or, and.\n   example:\n[\"ai_search_volume\"\
+      ,\">\",\"1000\"]\nThe full list of possible filters is available in 'ai_optimization_llm_mentions_filters'\
+      \ tool"
+    required: false
+    default: ''
+  - name: internal_list_limit
+    type: float
+    description: Internal parameter to limit the number of items processed. Not exposed
+      to end-users.
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: ai_optimization_llm_mentions_top_domains
+  description: This endpoint provides aggregated LLM mentions metrics grouped by the
+    most frequently mentioned domains for the specified target
+  parameters:
+  - name: target
+    type: list
+    description: 'Array of target objects to search for LLM mentions. Each object
+      must contain either ''domain'' or ''keyword''. Maximum number of targets: 1000'
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location, example: ''United Kingdom'', ''United
+      States'''
+    required: false
+    default: ''
+  - name: language_code
+    type: str
+    description: Search engine language code (e.g., 'en')
+    required: false
+    default: ''
+  - name: platform
+    type: str
+    description: Platform to search for LLM mentions
+    required: false
+    default: ''
+  - name: links_scope
+    type: str
+    description: specifies which links will be used to extract domains and aggregation
+    required: false
+    default: ''
+  - name: initial_dataset_filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n   you\
+      \ should set a logical operator and, or between the conditions\n   the following\
+      \ operators are supported:\n   regex, not_regex, <, <=, >, >=, =, <>, in, not_in,\
+      \ match, not_match, ilike, not_ilike, like, not_like\n   you can use the % operator\
+      \ with like and not_like, as well as ilike and not_ilike to match any string\
+      \ of zero or more characters\n   merge operator must be a string and connect\
+      \ two other arrays, availible values: or, and.\n   example:\n[\"ai_search_volume\"\
+      ,\">\",\"1000\"]\nThe full list of possible filters is available in 'ai_optimization_llm_mentions_filters'\
+      \ tool"
+    required: false
+    default: ''
+  - name: items_list_limit
+    type: float
+    description: maximum number of results in the items array, min value is 1, max
+      value is 10
+    required: false
+    default: ''
+  - name: internal_list_limit
+    type: float
+    description: maximum number of elements within internal arrays, min value is 1,
+      max value is 10
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: ai_optimization_llm_mentions_top_pages
+  description: This endpoint provides aggregated LLM mentions metrics grouped by the
+    most frequently mentioned pages for the specified target
+  parameters:
+  - name: target
+    type: list
+    description: 'Array of target objects to search for LLM mentions. Each object
+      must contain either ''domain'' or ''keyword''. Maximum number of targets: 1000'
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location, example: ''United Kingdom'', ''United
+      States'''
+    required: false
+    default: ''
+  - name: language_code
+    type: str
+    description: Search engine language code (e.g., 'en')
+    required: false
+    default: ''
+  - name: platform
+    type: str
+    description: Platform to search for LLM mentions
+    required: false
+    default: ''
+  - name: links_scope
+    type: str
+    description: specifies which links will be used to extract domains and aggregation
+    required: false
+    default: ''
+  - name: initial_dataset_filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n   you\
+      \ should set a logical operator and, or between the conditions\n   the following\
+      \ operators are supported:\n   regex, not_regex, <, <=, >, >=, =, <>, in, not_in,\
+      \ match, not_match, ilike, not_ilike, like, not_like\n   you can use the % operator\
+      \ with like and not_like, as well as ilike and not_ilike to match any string\
+      \ of zero or more characters\n   merge operator must be a string and connect\
+      \ two other arrays, availible values: or, and.\n   example:\n[\"ai_search_volume\"\
+      ,\">\",\"1000\"]\nThe full list of possible filters is available in 'ai_optimization_llm_mentions_filters'\
+      \ tool"
+    required: false
+    default: ''
+  - name: items_list_limit
+    type: float
+    description: maximum number of results in the items array, min value is 1, max
+      value is 10
+    required: false
+    default: ''
+  - name: internal_list_limit
+    type: float
+    description: maximum number of elements within internal arrays, min value is 1,
+      max value is 10
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: serp_organic_live_advanced
+  description: Get organic search results for a keyword in specified search engine
+  parameters:
+  - name: search_engine
+    type: str
+    description: 'search engine name, one of: google, yahoo, bing.'
+    required: false
+    default: google
+  - name: location_name
+    type: str
+    description: "full name of the location\nrequired field\nLocation format - hierarchical,\
+      \ comma-separated (from most specific to least)\n Can be one of:\n 1. Country\
+      \ only: \"United States\"\n 2. Region,Country: \"California,United States\"\n\
+      \ 3. City,Region,Country: \"San Francisco,California,United States\""
+    required: false
+    default: United States
+  - name: depth
+    type: float
+    description: 'parsing depth
+
+      optional field
+
+      number of results in SERP'
+    required: false
+    default: '10'
+  - name: language_code
+    type: str
+    description: search engine language code (e.g., 'en')
+    required: true
+    default: ''
+  - name: keyword
+    type: str
+    description: Search keyword
+    required: true
+    default: ''
+  - name: max_crawl_pages
+    type: float
+    description: 'page crawl limit
+
+      optional field
+
+      number of search results pages to crawl
+
+      max value: 100
+
+      Note: the max_crawl_pages and depth parameters complement each other'
+    required: false
+    default: '1'
+  - name: device
+    type: str
+    description: 'device type
+
+      optional field
+
+      can take the values:desktop, mobile
+
+      default value: desktop'
+    required: false
+    default: desktop
+  - name: people_also_ask_click_depth
+    type: float
+    description: "clicks on the corresponding element\n        specify the click depth\
+      \ on the people_also_ask element to get additional people_also_ask_element items;"
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: serp_locations
+  description: Utility tool for serp_organic_live_advanced to get list of availible
+    locations.
+  parameters:
+  - name: search_engine
+    type: str
+    description: 'search engine name, one of: google, yahoo, bing.'
+    required: false
+    default: google
+  - name: country_iso_code
+    type: str
+    description: 'ISO 3166-1 alpha-2 country code, for example: US, GB, MT'
+    required: true
+    default: ''
+  - name: location_type
+    type: str
+    description: 'Type of location. Possible variants: ''TV Region'',''Postal Code'',''Neighborhood'',''Governorate'',''National
+      Park'',''Quarter'',''Canton'',''Airport'',''Okrug'',''Prefecture'',''City'',''Country'',''Province'',''Barrio'',''Sub-District'',''Congressional
+      District'',''Municipality District'',''district'',''DMA Region'',''Union Territory'',''Territory'',''Colloquial
+      Area'',''Autonomous Community'',''Borough'',''County'',''State'',''District'',''City
+      Region'',''Commune'',''Region'',''Department'',''Division'',''Sub-Ward'',''Municipality'',''University'''
+    required: false
+    default: ''
+  - name: location_name
+    type: str
+    description: Name of location or it`s part.
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: serp_youtube_locations
+  description: 'Utility tool to get list of available locations for: serp_youtube_organic_live_advanced,
+    serp_youtube_video_info_live_advanced, serp_youtube_video_comments_live_advanced,
+    serp_youtube_video_subtitles_live_advanced.'
+  parameters:
+  - name: country_iso_code
+    type: str
+    description: 'ISO 3166-1 alpha-2 country code, for example: US, GB, MT'
+    required: true
+    default: ''
+  - name: location_type
+    type: str
+    description: 'Type of location. Possible variants: ''TV Region'',''Postal Code'',''Neighborhood'',''Governorate'',''National
+      Park'',''Quarter'',''Canton'',''Airport'',''Okrug'',''Prefecture'',''City'',''Country'',''Province'',''Barrio'',''Sub-District'',''Congressional
+      District'',''Municipality District'',''district'',''DMA Region'',''Union Territory'',''Territory'',''Colloquial
+      Area'',''Autonomous Community'',''Borough'',''County'',''State'',''District'',''City
+      Region'',''Commune'',''Region'',''Department'',''Division'',''Sub-Ward'',''Municipality'',''University'''
+    required: false
+    default: ''
+  - name: location_name
+    type: str
+    description: Name of location or it`s part.
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: serp_youtube_organic_live_advanced
+  description: provides top 20 blocks of youtube search engine results for a keyword
+  parameters:
+  - name: keyword
+    type: str
+    description: Search keyword
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: "full name of the location\nrequired field\nLocation format - hierarchical,\
+      \ comma-separated (from most specific to least)\n Can be one of:\n 1. Country\
+      \ only: \"United States\"\n 2. Region,Country: \"California,United States\"\n\
+      \ 3. City,Region,Country: \"San Francisco,California,United States\""
+    required: true
+    default: ''
+  - name: language_code
+    type: str
+    description: search engine language code (e.g., 'en')
+    required: true
+    default: ''
+  - name: device
+    type: str
+    description: 'device type
+
+      optional field
+
+      can take the values:desktop, mobile
+
+      default value: desktop'
+    required: false
+    default: desktop
+  - name: os
+    type: str
+    description: 'device operating system
+
+      optional field
+
+      if you specify desktop in the device field, choose from the following values:
+      windows, macos
+
+      default value: windows
+
+      if you specify mobile in the device field, choose from the following values:
+      android, ios
+
+      default value: android'
+    required: false
+    default: windows
+  - name: block_depth
+    type: float
+    description: 'parsing depth
+
+      optional field
+
+      number of blocks of results in SERP
+
+      max value: 700'
+    required: false
+    default: '20'
+  returns: ''
+  category: general
+  component: null
+- name: serp_youtube_video_info_live_advanced
+  description: provides data on the video you specify
+  parameters:
+  - name: video_id
+    type: str
+    description: ID of the video
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: "full name of the location\nrequired field\nLocation format - hierarchical,\
+      \ comma-separated (from most specific to least)\n Can be one of:\n 1. Country\
+      \ only: \"United States\"\n 2. Region,Country: \"California,United States\"\n\
+      \ 3. City,Region,Country: \"San Francisco,California,United States\""
+    required: true
+    default: ''
+  - name: language_code
+    type: str
+    description: search engine language code (e.g., 'en')
+    required: true
+    default: ''
+  - name: device
+    type: str
+    description: 'device type
+
+      optional field
+
+      can take the values:desktop, mobile
+
+      default value: desktop'
+    required: false
+    default: desktop
+  - name: os
+    type: str
+    description: 'device operating system
+
+      optional field
+
+      if you specify desktop in the device field, choose from the following values:
+      windows, macos
+
+      default value: windows
+
+      if you specify mobile in the device field, choose from the following values:
+      android, ios
+
+      default value: android'
+    required: false
+    default: windows
+  returns: ''
+  category: general
+  component: null
+- name: serp_youtube_video_comments_live_advanced
+  description: provides data on the video comments you specify
+  parameters:
+  - name: video_id
+    type: str
+    description: ID of the video
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: "full name of the location\nrequired field\nLocation format - hierarchical,\
+      \ comma-separated (from most specific to least)\n Can be one of:\n 1. Country\
+      \ only: \"United States\"\n 2. Region,Country: \"California,United States\"\n\
+      \ 3. City,Region,Country: \"San Francisco,California,United States\""
+    required: true
+    default: ''
+  - name: language_code
+    type: str
+    description: search engine language code (e.g., 'en')
+    required: true
+    default: ''
+  - name: device
+    type: str
+    description: 'device type
+
+      optional field
+
+      can take the values:desktop, mobile
+
+      default value: desktop'
+    required: false
+    default: desktop
+  - name: os
+    type: str
+    description: 'device operating system
+
+      optional field
+
+      if you specify desktop in the device field, choose from the following values:
+      windows, macos
+
+      default value: windows
+
+      if you specify mobile in the device field, choose from the following values:
+      android, ios
+
+      default value: android'
+    required: false
+    default: windows
+  - name: depth
+    type: float
+    description: 'parsing depth, number of results in SERP, max value: 700'
+    required: false
+    default: '20'
+  returns: ''
+  category: general
+  component: null
+- name: serp_youtube_video_subtitles_live_advanced
+  description: provides data on the video subtitles you specify
+  parameters:
+  - name: video_id
+    type: str
+    description: ID of the video
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: "full name of the location\nrequired field\nLocation format - hierarchical,\
+      \ comma-separated (from most specific to least)\n Can be one of:\n 1. Country\
+      \ only: \"United States\"\n 2. Region,Country: \"California,United States\"\n\
+      \ 3. City,Region,Country: \"San Francisco,California,United States\""
+    required: true
+    default: ''
+  - name: language_code
+    type: str
+    description: search engine language code (e.g., 'en')
+    required: true
+    default: ''
+  - name: subtitles_language
+    type: str
+    description: language code of original text (e.g., 'en')
+    required: false
+    default: ''
+  - name: subtitles_translate_language
+    type: str
+    description: language code of translated text (e.g., 'en')
+    required: false
+    default: ''
+  - name: device
+    type: str
+    description: 'device type
+
+      optional field
+
+      can take the values:desktop, mobile
+
+      default value: desktop'
+    required: false
+    default: desktop
+  - name: os
+    type: str
+    description: 'device operating system
+
+      optional field
+
+      if you specify desktop in the device field, choose from the following values:
+      windows, macos
+
+      default value: windows
+
+      if you specify mobile in the device field, choose from the following values:
+      android, ios
+
+      default value: android'
+    required: false
+    default: windows
+  returns: ''
+  category: general
+  component: null
+- name: keywords_data_google_ads_search_volume
+  description: Get search volume data for keywords from Google Ads
+  parameters:
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      optional field
+
+      in format "Country"
+
+      example:
+
+      United Kingdom'
+    required: false
+    default: ''
+  - name: language_code
+    type: str
+    description: 'Language two-letter ISO code (e.g., ''en'').
+
+      optional field'
+    required: false
+    default: ''
+  - name: keywords
+    type: list
+    description: Array of keywords to get search volume for
+    required: true
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: keywords_data_dataforseo_trends_demography
+  description: This endpoint will provide you with the demographic breakdown (by age
+    and gender) of keyword popularity per each specified term based on DataForSEO
+    Trends data
+  parameters:
+  - name: location_name
+    type: str
+    description: "full name of the location\n        optional field\n        in format\
+      \ \"Country\"\n        example:\n        United Kingdom"
+    required: false
+    default: ''
+  - name: keywords
+    type: list
+    description: "keywords\n        the maximum number of keywords you can specify:\
+      \ 5"
+    required: true
+    default: ''
+  - name: type
+    type: str
+    description: dataforseo trends type
+    required: false
+    default: web
+  - name: date_from
+    type: str
+    description: "starting date of the time range\n          if you don\u2019t specify\
+      \ this field, the current day and month of the preceding year will be used by\
+      \ default\n          minimal value for the web type: 2004-01-01\n          minimal\
+      \ value for other types: 2008-01-01\n          date format: \"yyyy-mm-dd\"\n\
+      \          example:\n          \"2019-01-15\""
+    required: false
+    default: ''
+  - name: date_to
+    type: str
+    description: "ending date of the time range\n            if you don\u2019t specify\
+      \ this field, the today\u2019s date will be used by default\n            date\
+      \ format: \"yyyy-mm-dd\"\n            example:\n            \"2019-01-15\""
+    required: false
+    default: ''
+  - name: time_range
+    type: str
+    description: "preset time ranges\n            if you specify date_from or date_to\
+      \ parameters, this field will be ignored when setting a task"
+    required: false
+    default: past_7_days
+  returns: ''
+  category: general
+  component: null
+- name: keywords_data_dataforseo_trends_subregion_interests
+  description: This endpoint will provide you with location-specific keyword popularity
+    data from DataForSEO Trends
+  parameters:
+  - name: location_name
+    type: str
+    description: "full name of the location\n        optional field\n        in format\
+      \ \"Country\"\n        example:\n        United Kingdom"
+    required: false
+    default: ''
+  - name: keywords
+    type: list
+    description: "keywords\n        the maximum number of keywords you can specify:\
+      \ 5"
+    required: true
+    default: ''
+  - name: type
+    type: str
+    description: dataforseo trends type
+    required: false
+    default: web
+  - name: date_from
+    type: str
+    description: "starting date of the time range\n          if you don\u2019t specify\
+      \ this field, the current day and month of the preceding year will be used by\
+      \ default\n          minimal value for the web type: 2004-01-01\n          minimal\
+      \ value for other types: 2008-01-01\n          date format: \"yyyy-mm-dd\"\n\
+      \          example:\n          \"2019-01-15\""
+    required: false
+    default: ''
+  - name: date_to
+    type: str
+    description: "ending date of the time range\n            if you don\u2019t specify\
+      \ this field, the today\u2019s date will be used by default\n            date\
+      \ format: \"yyyy-mm-dd\"\n            example:\n            \"2019-01-15\""
+    required: false
+    default: ''
+  - name: time_range
+    type: str
+    description: "preset time ranges\n            if you specify date_from or date_to\
+      \ parameters, this field will be ignored when setting a task"
+    required: false
+    default: past_7_days
+  returns: ''
+  category: general
+  component: null
+- name: keywords_data_dataforseo_trends_explore
+  description: This endpoint will provide you with the keyword popularity data from
+    DataForSEO Trends. You can check keyword trends for Google Search, Google News,
+    and Google Shopping
+  parameters:
+  - name: location_name
+    type: str
+    description: "full name of the location\n        optional field\n        in format\
+      \ \"Country\"\n        example:\n        United Kingdom"
+    required: false
+    default: ''
+  - name: keywords
+    type: list
+    description: "keywords\n        the maximum number of keywords you can specify:\
+      \ 5"
+    required: true
+    default: ''
+  - name: type
+    type: str
+    description: dataforseo trends type
+    required: false
+    default: web
+  - name: date_from
+    type: str
+    description: "starting date of the time range\n          if you don\u2019t specify\
+      \ this field, the current day and month of the preceding year will be used by\
+      \ default\n          minimal value for the web type: 2004-01-01\n          minimal\
+      \ value for other types: 2008-01-01\n          date format: \"yyyy-mm-dd\"\n\
+      \          example:\n          \"2019-01-15\""
+    required: false
+    default: ''
+  - name: date_to
+    type: str
+    description: "ending date of the time range\n            if you don\u2019t specify\
+      \ this field, the today\u2019s date will be used by default\n            date\
+      \ format: \"yyyy-mm-dd\"\n            example:\n            \"2019-01-15\""
+    required: false
+    default: ''
+  - name: time_range
+    type: str
+    description: "preset time ranges\n            if you specify date_from or date_to\
+      \ parameters, this field will be ignored when setting a task"
+    required: false
+    default: past_7_days
+  returns: ''
+  category: general
+  component: null
+- name: keywords_data_google_trends_categories
+  description: This endpoint will provide you list of Google Trends Categories
+  parameters: []
+  returns: ''
+  category: general
+  component: null
+- name: keywords_data_google_trends_explore
+  description: "This endpoint will provide you with the keyword popularity data from\
+    \ the \u2018Explore\u2019 feature of Google Trends. You can check keyword trends\
+    \ for Google Search, Google News, Google Images, Google Shopping, and YouTube"
+  parameters:
+  - name: location_name
+    type: str
+    description: "full name of the location\n        optional field\n        in format\
+      \ \"Country\"\n        example:\n        United Kingdom"
+    required: false
+    default: ''
+  - name: language_code
+    type: str
+    description: "Language two-letter ISO code (e.g., 'en').\n        optional field"
+    required: false
+    default: ''
+  - name: keywords
+    type: list
+    description: "keywords\n        the maximum number of keywords you can specify:\
+      \ 5\n        the maximum number of characters you can specify in a keyword:\
+      \ 100\n        the minimum number of characters must be greater than 1\n   \
+      \     comma characters (,) in the specified keywords will be unset and ignored\n\
+      \        Note: keywords cannot consist of a combination of the following characters:\
+      \ < > |  \" - + = ~ ! : * ( ) [ ] { }\n\n        Note: to obtain google_trends_topics_list\
+      \ and google_trends_queries_list items, specify no more than 1 keyword"
+    required: true
+    default: ''
+  - name: type
+    type: str
+    description: google trends type
+    required: false
+    default: web
+  - name: date_from
+    type: str
+    description: "starting date of the time range\n          if you don\u2019t specify\
+      \ this field, the current day and month of the preceding year will be used by\
+      \ default\n          minimal value for the web type: 2004-01-01\n          minimal\
+      \ value for other types: 2008-01-01\n          date format: \"yyyy-mm-dd\"\n\
+      \          example:\n          \"2019-01-15\""
+    required: false
+    default: ''
+  - name: date_to
+    type: str
+    description: "ending date of the time range\n            if you don\u2019t specify\
+      \ this field, the today\u2019s date will be used by default\n            date\
+      \ format: \"yyyy-mm-dd\"\n            example:\n            \"2019-01-15\""
+    required: false
+    default: ''
+  - name: time_range
+    type: str
+    description: "preset time ranges\n            if you specify date_from or date_to\
+      \ parameters, this field will be ignored when setting a task"
+    required: false
+    default: past_7_days
+  - name: item_types
+    type: list
+    description: "types of items returned\n            to speed up the execution of\
+      \ the request, specify one item at a time"
+    required: false
+    default: '[''google_trends_graph'']'
+  - name: category_code
+    type: float
+    description: "google trends search category\n            you can receive the list\
+      \ of available categories with their category_code by making a separate request\
+      \ to the keywords_data_google_trends_categories tool"
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: on_page_content_parsing
+  description: This endpoint allows parsing the content on any page you specify and
+    will return the structured content of the target page, including link URLs, anchors,
+    headings, and textual content.
+  parameters:
+  - name: url
+    type: str
+    description: URL of the page to parse
+    required: true
+    default: ''
+  - name: enable_javascript
+    type: bool
+    description: Enable JavaScript rendering
+    required: false
+    default: ''
+  - name: custom_js
+    type: str
+    description: Custom JavaScript code to execute
+    required: false
+    default: ''
+  - name: custom_user_agent
+    type: str
+    description: Custom User-Agent header
+    required: false
+    default: ''
+  - name: accept_language
+    type: str
+    description: Accept-Language header value
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: on_page_instant_pages
+  description: Using this function you will get page-specific data with detailed information
+    on how well a particular page is optimized for organic search
+  parameters:
+  - name: url
+    type: str
+    description: URL to analyze
+    required: true
+    default: ''
+  - name: enable_javascript
+    type: bool
+    description: Enable JavaScript rendering
+    required: false
+    default: ''
+  - name: custom_js
+    type: str
+    description: Custom JavaScript code to execute
+    required: false
+    default: ''
+  - name: custom_user_agent
+    type: str
+    description: Custom User-Agent header
+    required: false
+    default: ''
+  - name: accept_language
+    type: str
+    description: "language header for accessing the website\n        all locale formats\
+      \ are supported (xx, xx-XX, xxx-XX, etc.)\n        Note: if you do not specify\
+      \ this parameter, some websites may deny access; in this case, pages will be\
+      \ returned with the \"type\":\"broken in the response array"
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: on_page_lighthouse
+  description: "The OnPage Lighthouse API is based on Google\u2019s open-source Lighthouse\
+    \ project for measuring the quality of web pages and web apps."
+  parameters:
+  - name: url
+    type: str
+    description: URL of the page to parse
+    required: true
+    default: ''
+  - name: enable_javascript
+    type: bool
+    description: Enable JavaScript rendering
+    required: false
+    default: ''
+  - name: custom_js
+    type: str
+    description: Custom JavaScript code to execute
+    required: false
+    default: ''
+  - name: custom_user_agent
+    type: str
+    description: Custom User-Agent header
+    required: false
+    default: ''
+  - name: accept_language
+    type: str
+    description: Accept-Language header value
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_ranked_keywords
+  description: This endpoint will provide you with the list of keywords that any domain
+    or webpage is ranking for. You will also get SERP elements related to the keyword
+    position, as well as impressions, monthly searches and other data relevant to
+    the returned keywords.
+  parameters:
+  - name: target
+    type: str
+    description: 'domain name or page url
+
+      required field
+
+      the domain name of the target website or URL of the target webpage;
+
+      the domain name must be specified without https:// or www.;
+
+      the webpage URL must be specified with https:// or www.
+
+      Note: if you specify the webpage URL without https:// or www., the result will
+      be returned for the entire domain rather than the specific page
+
+      '
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: limit
+    type: float
+    description: Maximum number of keywords to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: "offset in the results array of returned keywords\n        optional\
+      \ field\n        default value: 0\n        if you specify the 10 value, the\
+      \ first ten keywords in the results array will be omitted and the data will\
+      \ be provided for the successive keywords"
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "Array of filter conditions and logical operators. Each filter condition\
+      \ is an array of [field, operator, value].\n        Maximum 8 filters allowed.\n\
+      \        Available operators: =, <>, <, <=, >, >=, in, not_in, like, not_like,\
+      \ ilike, not_ilike, regex, not_regex, match, not_match\n        Logical operators:\
+      \ \"and\", \"or\"\n        Examples:\n        Simple filter: [[\"ranked_serp_element.serp_item.rank_group\"\
+      ,\"<=\",10]]\n        With logical operator: [[\"ranked_serp_element.serp_item.rank_group\"\
+      ,\"<=\",10],\"or\",[\"ranked_serp_element.serp_item.type\",\"<>\",\"paid\"]]\n\
+      \        Complex filter: [[\"keyword_data.keyword_info.search_volume\",\"<>\"\
+      ,0],\"and\",[[\"ranked_serp_element.serp_item.type\",\"<>\",\"paid\"],\"or\"\
+      ,[\"ranked_serp_element.serp_item.is_malicious\",\"=\",false]]]"
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"keyword_data.keyword_info.competition,desc\"]\n\
+      default rule:\n[\"ranked_serp_element.serp_item.rank_group,asc\"]\nnote that\
+      \ you can set no more than three sorting rules in a single request\nyou should\
+      \ use a comma to separate several sorting rules\nexample:\n[\"keyword_data.keyword_info.search_volume,desc\"\
+      ,\"keyword_data.keyword_info.cpc,desc\"]"
+    required: false
+    default: ''
+  - name: include_subdomains
+    type: bool
+    description: Include keywords from subdomains
+    required: false
+    default: ''
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  - name: item_types
+    type: list
+    description: 'display results by item type
+
+      indicates the type of search results included in the response'
+    required: false
+    default: '[''organic'']'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_competitors_domain
+  description: This endpoint will provide you with a full overview of ranking and
+    traffic data of the competitor domains from organic and paid search. In addition
+    to that, you will get the metrics specific to the keywords both competitor domains
+    and your domain rank for within the same SERP.
+  parameters:
+  - name: target
+    type: str
+    description: target domain
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: ignore_synonyms
+    type: bool
+    description: ignore highly similar keywords, if set to true, results will be more
+      accurate
+    required: false
+    default: 'True'
+  - name: limit
+    type: float
+    description: Maximum number of keywords to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: "offset in the results array of returned keywords\n        optional\
+      \ field\n        default value: 0\n        if you specify the 10 value, the\
+      \ first ten keywords in the results array will be omitted and the data will\
+      \ be provided for the successive keywords"
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n      \
+      \  you should set a logical operator and, or between the conditions\n      \
+      \  the following operators are supported:\n        regex, not_regex, <, <=,\
+      \ >, >=, =, <>, in, not_in, match, not_match, ilike, not_ilike, like, not_like\n\
+      \        you can use the % operator with like and not_like, as well as ilike\
+      \ and not_ilike to match any string of zero or more characters\n        merge\
+      \ operator must be a string and connect two other arrays, availible values:\
+      \ or, and.\n        example:\n        [\"metrics.organic.count\",\">\",50]\n\
+      \        [[\"metrics.organic.pos_1\",\"<>\",0],\"and\",[\"metrics.organic.impressions_etv\"\
+      ,\">=\",\"10\"]]\n\n        [[[\"metrics.organic.count\",\">=\",50],\"and\"\
+      ,[\"metrics.organic.pos_1\",\"in\",[1,5]]],\n        \"or\",\n        [\"metrics.organic.etv\"\
+      ,\">=\",\"100\"]]"
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting parameter\ndefault rule:\n[\"relevance,desc\"]\nexample:\n[\"relevance,desc\"\
+      ,\"keyword_info.search_volume,desc\"]"
+    required: false
+    default: ''
+  - name: exclude_top_domains
+    type: bool
+    description: "indicates whether to exclude world's largest websites\n        optional\
+      \ field\n        default value: false\n        set to true if you want to get\
+      \ highly-relevant competitors excluding the top websites"
+    required: false
+    default: 'True'
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  - name: item_types
+    type: list
+    description: 'display results by item type
+
+      indicates the type of search results included in the response'
+    required: false
+    default: '[''organic'']'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_domain_rank_overview
+  description: This endpoint will provide you with ranking and traffic data from organic
+    and paid search for the specified domain. You will be able to review the domain
+    ranking distribution in SERPs as well as estimated monthly traffic volume for
+    both organic and paid results.
+  parameters:
+  - name: target
+    type: str
+    description: target domain
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: ignore_synonyms
+    type: bool
+    description: ignore highly similar keywords, if set to true, results will be more
+      accurate
+    required: false
+    default: 'True'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_keyword_ideas
+  description: 'The Keyword Ideas provides search terms that are relevant to the product
+    or service categories of the specified keywords. The algorithm selects the keywords
+    which fall into the same categories as the seed keywords specified in a POST array.
+
+    As a result, you will get a list of relevant keyword ideas for up to 200 seed
+    keywords.
+
+    Along with each keyword idea, you will get its search volume rate for the last
+    month, search volume trend for the previous 12 months, as well as current cost-per-click
+    and competition values. Moreover, this endpoint supplies minimum, maximum and
+    average values of daily impressions, clicks and CPC for each result.
+
+    '
+  parameters:
+  - name: keywords
+    type: list
+    description: target keywords
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: "full name of the location\n  required field\n  only in format \"\
+      Country\" (not \"City\" or \"Region\")\n  example:\n  'United Kingdom', 'United\
+      \ States', 'Canada'"
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: limit
+    type: float
+    description: Maximum number of keywords to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: "offset in the results array of returned keywords\n        optional\
+      \ field\n        default value: 0\n        if you specify the 10 value, the\
+      \ first ten keywords in the results array will be omitted and the data will\
+      \ be provided for the successive keywords"
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n      \
+      \  you should set a logical operator and, or between the conditions\n      \
+      \  the following operators are supported:\n        regex, not_regex, <, <=,\
+      \ >, >=, =, <>, in, not_in, match, not_match, ilike, not_ilike, like, not_like\n\
+      \        you can use the % operator with like and not_like, as well as ilike\
+      \ and not_ilike to match any string of zero or more characters\n        merge\
+      \ operator must be a string and connect two other arrays, availible values:\
+      \ or, and.\n        example:\n        [\"keyword_info.search_volume\",\">\"\
+      ,0]\n        [[\"keyword_info.search_volume\",\"in\",[0,1000]],\"and\",[\"keyword_info.competition_level\"\
+      ,\"=\",\"LOW\"]]\n        [[\"keyword_info.search_volume\",\">\",100],\"and\"\
+      ,[[\"keyword_info.cpc\",\"<\",0.5],\"or\",[\"keyword_info.high_top_of_page_bid\"\
+      ,\"<=\",0.5]]]"
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting parameter\ndefault rule:\n[\"relevance,desc\"]\nrelevance is used\
+      \ as the default sorting rule to provide you with the closest keyword ideas.\
+      \ We recommend using this sorting rule to get highly-relevant search terms.\
+      \ Note that relevance is only our internal system identifier, so it can not\
+      \ be used as a filter, and you will not find this field in the result array.\
+      \ The relevance score is based on a similar principle as used in the Keywords\
+      \ For Keywords endpoint.\nnote that you can set no more than three sorting rules\
+      \ in a single request\nyou should use a comma to separate several sorting rules\n\
+      example:\n[\"relevance,desc\",\"keyword_info.search_volume,desc\"]"
+    required: false
+    default: ''
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_related_keywords
+  description: "The Related Keywords endpoint provides keywords appearing in the\n\
+    \ \"searches related to\" SERP element\nYou can get up to 4680 keyword ideas by\
+    \ specifying the search depth. Each related keyword comes with the list of relevant\
+    \ product categories, search volume rate for the last month, search volume trend\
+    \ for the previous 12 months, as well as current cost-per-click and competition\
+    \ values. Moreover, this endpoint supplies minimum, maximum and average values\
+    \ of daily impressions, clicks and CPC for each result.\n\nDatasource: DataForSEO\
+    \ SERPs Database\nSearch algorithm: depth-first search for queries appearing in\
+    \ the \"search related to\" element of SERP for the specified seed keyword.\n"
+  parameters:
+  - name: keyword
+    type: str
+    description: target keyword
+    required: true
+    default: ''
+  - name: depth
+    type: float
+    description: keyword search depth
+    required: false
+    default: '1'
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: limit
+    type: float
+    description: Maximum number of keywords to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: "offset in the results array of returned keywords\n        optional\
+      \ field\n        default value: 0\n        if you specify the 10 value, the\
+      \ first ten keywords in the results array will be omitted and the data will\
+      \ be provided for the successive keywords"
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n      \
+      \  you should set a logical operator and, or between the conditions\n      \
+      \  the following operators are supported:\n        regex, not_regex, <, <=,\
+      \ >, >=, =, <>, in, not_in, match, not_match, ilike, not_ilike, like, not_like\n\
+      \        you can use the % operator with like and not_like, as well as ilike\
+      \ and not_ilike to match any string of zero or more characters\n        merge\
+      \ operator must be a string and connect two other arrays, availible values:\
+      \ or, and.\nexample:\n[\"keyword_data.keyword_info.search_volume\",\">\",0]\n\
+      [[\"keyword_info.search_volume\",\"in\",[0,1000]],\n\"and\",\n[\"keyword_data.keyword_info.competition_level\"\
+      ,\"=\",\"LOW\"]]\n\n[[\"keyword_data.keyword_info.search_volume\",\">\",100],\n\
+      \"and\",\n[[\"keyword_data.keyword_info.cpc\",\"<\",0.5],\n\"or\",\n[\"keyword_data.keyword_info.high_top_of_page_bid\"\
+      ,\"<=\",0.5]]]"
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"keyword_data.keyword_info.competition,desc\"]\n\
+      default rule:\n[\"keyword_data.keyword_info.search_volume,desc\"]\nnote that\
+      \ you can set no more than three sorting rules in a single request\nyou should\
+      \ use a comma to separate several sorting rules\nexample:\n[\"keyword_data.keyword_info.search_volume,desc\"\
+      ,\"keyword_data.keyword_info.cpc,desc\"]"
+    required: false
+    default: ''
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_keyword_suggestions
+  description: 'The Keyword Suggestions provides search queries that include the specified
+    seed keyword.
+
+
+    The algorithm is based on the full-text search for the specified keyword and therefore
+    returns only those search terms that contain the keyword you set in the POST array
+    with additional words before, after, or within the specified key phrase. Returned
+    keyword suggestions can contain the words from the specified key phrase in a sequence
+    different from the one you specify.
+
+
+    As a result, you will get a list of long-tail keywords with each keyword in the
+    list matching the specified search term.
+
+
+    Along with each suggested keyword, you will get its search volume rate for the
+    last month, search volume trend for the previous 12 months, as well as current
+    cost-per-click and competition values. Moreover, this endpoint supplies minimum,
+    maximum and average values of daily impressions, clicks and CPC for each result.
+
+
+    '
+  parameters:
+  - name: keyword
+    type: str
+    description: target keyword
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: limit
+    type: float
+    description: Maximum number of keywords to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: "offset in the results array of returned keywords\n        optional\
+      \ field\n        default value: 0\n        if you specify the 10 value, the\
+      \ first ten keywords in the results array will be omitted and the data will\
+      \ be provided for the successive keywords"
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n      \
+      \  you should set a logical operator and, or between the conditions\n      \
+      \  the following operators are supported:\n        regex, not_regex, <, <=,\
+      \ >, >=, =, <>, in, not_in, match, not_match, ilike, not_ilike, like, not_like\n\
+      \        you can use the % operator with like and not_like, as well as ilike\
+      \ and not_ilike to match any string of zero or more characters\n        merge\
+      \ operator must be a string and connect two other arrays, availible values:\
+      \ or, and.\n        example:\n      [\"keyword_info.search_volume\",\">\",0]\n\
+      [[\"keyword_info.search_volume\",\"in\",[0,1000]],\n\"and\",\n[\"keyword_info.competition_level\"\
+      ,\"=\",\"LOW\"]][[\"keyword_info.search_volume\",\">\",100],\n\"and\",\n[[\"\
+      keyword_info.cpc\",\"<\",0.5],\n\"or\",\n[\"keyword_info.high_top_of_page_bid\"\
+      ,\"<=\",0.5]]]"
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\na comma is used as a separator\nexample:\n\
+      [\"keyword_info.competition,desc\"]\ndefault rule:\n[\"keyword_info.search_volume,desc\"\
+      ]\nnote that you can set no more than three sorting rules in a single request\n\
+      you should use a comma to separate several sorting rules\nexample:\n[\"keyword_info.search_volume,desc\"\
+      ,\"keyword_info.cpc,desc\"]"
+    required: false
+    default: ''
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_historical_serp
+  description: This endpoint will provide you with Google SERPs collected within the
+    specified time frame. You will also receive a complete overview of featured snippets
+    and other extra elements that were present within the specified dates. The data
+    will allow you to analyze the dynamics of keyword rankings over time for the specified
+    keyword and location.
+  parameters:
+  - name: keyword
+    type: str
+    description: target keyword
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_serp_competitors
+  description: This endpoint will provide you with a list of domains ranking for the
+    keywords you specify. You will also get SERP rankings, rating, estimated traffic
+    volume, and visibility values the provided domains gain from the specified keywords.
+  parameters:
+  - name: keywords
+    type: list
+    description: 'keywords array
+
+      required field
+
+      the results will be based on the keywords you specify in this array
+
+      UTF-8 encoding;
+
+      the keywords will be converted to lowercase format;
+
+      you can specify the maximum of 200 keywords'
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: limit
+    type: float
+    description: Maximum number of keywords to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: "offset in the results array of returned keywords\n        optional\
+      \ field\n        default value: 0\n        if you specify the 10 value, the\
+      \ first ten keywords in the results array will be omitted and the data will\
+      \ be provided for the successive keywords"
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: 'you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      regex, not_regex, <, <=, >, >=, =, <>, in, not_in, match, not_match, ilike,
+      not_ilike, like, not_like
+
+      you can use the % operator with like and not_like, as well as ilike and not_ilike
+      to match any string of zero or more characters
+
+      example:
+
+      ["median_position","in",[1,10]]
+
+      [["median_position","in",[1,10]],"and",["domain","not_like","%wikipedia.org%"]]
+
+
+      [["domain","not_like","%wikipedia.org%"],
+
+      "and",
+
+      [["relevant_serp_items",">",0],"or",["median_position","in",[1,10]]]]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nthe comma is used as a separator\n\
+      example:\n[\"avg_position,asc\"]\ndefault rule:\n[\"rating,desc\"]\nnote that\
+      \ you can set no more than three sorting rules in a single request\nyou should\
+      \ use a comma to separate several sorting rules\nexample:\n[\"avg_position,asc\"\
+      ,\"etv,desc\"]"
+    required: false
+    default: ''
+  - name: include_subdomains
+    type: bool
+    description: Include keywords from subdomains
+    required: false
+    default: ''
+  - name: item_types
+    type: list
+    description: 'display results by item type
+
+      indicates the type of search results included in the response'
+    required: false
+    default: '[''organic'']'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_bulk_keyword_difficulty
+  description: This endpoint will provide you with the Keyword Difficulty metric for
+    a maximum of 1,000 keywords in one API request. Keyword Difficulty stands for
+    the relative difficulty of ranking in the first top-10 organic results for the
+    related keyword. Keyword Difficulty in DataForSEO API responses indicates the
+    chance of getting in top-10 organic results for a keyword on a logarithmic scale
+    from 0 to 100.
+  parameters:
+  - name: keywords
+    type: list
+    description: 'target keywords
+
+      required field
+
+      UTF-8 encoding
+
+      maximum number of keywords you can specify in this array: 1000'
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_subdomains
+  description: This endpoint will provide you with a list of subdomains of the specified
+    domain, along with the ranking distribution across organic and paid search. In
+    addition to that, you will also get the estimated traffic volume of subdomains
+    based on search volume.
+  parameters:
+  - name: target
+    type: str
+    description: target domain
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: ignore_synonyms
+    type: bool
+    description: ignore highly similar keywords, if set to true, results will be more
+      accurate
+    required: false
+    default: 'True'
+  - name: limit
+    type: float
+    description: Maximum number of keywords to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: "offset in the results array of returned keywords\n        optional\
+      \ field\n        default value: 0\n        if you specify the 10 value, the\
+      \ first ten keywords in the results array will be omitted and the data will\
+      \ be provided for the successive keywords"
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n      \
+      \  you should set a logical operator and, or between the conditions\n      \
+      \  the following operators are supported:\n        regex, not_regex, <, <=,\
+      \ >, >=, =, <>, in, not_in, match, not_match, ilike, not_ilike, like, not_like\n\
+      \        you can use the % operator with like and not_like, as well as ilike\
+      \ and not_ilike to match any string of zero or more characters\n        merge\
+      \ operator must be a string and connect two other arrays, availible values:\
+      \ or, and.\n        example:\n        [\"metrics.organic.count\",\">\",50]\n\
+      \        [[\"metrics.organic.pos_1\",\"<>\",0],\"and\",[\"metrics.organic.impressions_etv\"\
+      ,\">=\",\"10\"]]\n        [[[\"metrics.organic.count\",\">=\",50],\"and\",[\"\
+      metrics.organic.pos_1\",\"in\",[1,5]]],\"or\",[\"metrics.organic.etv\",\">=\"\
+      ,\"100\"]]"
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to specify\
+      \ a sorting type\nexample:\n[\"metrics.paid.etv,asc\"]\nNote: you can set no\
+      \ more than three sorting rules in a single request\nyou should use a comma\
+      \ to separate several sorting rules\nexample:\n[\"metrics.organic.etv,desc\"\
+      ,\"metrics.paid.count,asc\"]\ndefault rule:\n[\"metrics.organic.count,desc\"\
+      ]"
+    required: false
+    default: ''
+  - name: item_types
+    type: list
+    description: 'display results by item type
+
+      indicates the type of search results included in the response'
+    required: false
+    default: '[''organic'']'
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_keyword_overview
+  description: This endpoint provides Google keyword data for specified keywords.
+    For each keyword, you will receive current cost-per-click, competition values
+    for paid search, search volume, search intent, monthly searches
+  parameters:
+  - name: keywords
+    type: list
+    description: 'keywords
+
+      required field
+
+      The maximum number of keywords you can specify: 700
+
+      The maximum number of characters for each keyword: 80
+
+      The maximum number of words for each keyword phrase: 10
+
+      the specified keywords will be converted to lowercase format, data will be provided
+      in a separate array
+
+      note that if some of the keywords specified in this array are omitted in the
+      results you receive, then our database doesn''t contain such keywords and cannot
+      return data on them
+
+      you will not be charged for the keywords omitted in the results'
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_top_searches
+  description: The Top Searches endpoint of DataForSEO Labs API can provide you with
+    over 7 billion keywords from the DataForSEO Keyword Database. Each keyword in
+    the API response is provided with a set of relevant keyword data with Google Ads
+    metrics
+  parameters:
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: limit
+    type: float
+    description: Maximum number of keywords to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: "offset in the results array of returned keywords\n        optional\
+      \ field\n        default value: 0\n        if you specify the 10 value, the\
+      \ first ten keywords in the results array will be omitted and the data will\
+      \ be provided for the successive keywords"
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n      \
+      \  you should set a logical operator and, or between the conditions\n      \
+      \  the following operators are supported:\n        regex, not_regex, <, <=,\
+      \ >, >=, =, <>, in, not_in, match, not_match, ilike, not_ilike, like, not_like\n\
+      \        you can use the % operator with like and not_like, as well as ilike\
+      \ and not_ilike to match any string of zero or more characters\n        merge\
+      \ operator must be a string and connect two other arrays, availible values:\
+      \ or, and.\n        example:\n     [\"keyword_info.search_volume\",\">\",0]\n\
+      [[\"keyword_info.search_volume\",\"in\",[0,1000]],\n\"and\",\n[\"keyword_info.competition_level\"\
+      ,\"=\",\"LOW\"]][[\"keyword_info.search_volume\",\">\",100],\n\"and\",\n[[\"\
+      keyword_info.cpc\",\"<\",0.5],\n\"or\",\n[\"keyword_info.high_top_of_page_bid\"\
+      ,\"<=\",0.5]]]"
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "resuresults sorting rules\noptional field\nyou can use the same\
+      \ values as in the filters array to sort the results\npossible sorting types:\n\
+      asc \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"keyword_info.competition,desc\"]\ndefault rule:\n\
+      [\"keyword_info.search_volume,desc\"]\nnote that you can set no more than three\
+      \ sorting rules in a single request\nyou should use a comma to separate several\
+      \ sorting rules\nexample:\n[\"keyword_info.search_volume,desc\",\"keyword_info.cpc,desc\"\
+      ]"
+    required: false
+    default: ''
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_search_intent
+  description: 'This endpoint will provide you with search intent data for up to 1,000
+    keywords. For each keyword that you specify when setting a task, the API will
+    return the keyword''s search intent and intent probability. Besides the highest
+    probable search intent, the results will also provide you with other likely search
+    intent(s) and their probability.
+
+    Based on keyword data and search results data, our system has been trained to
+    detect four types of search intent: informational, navigational, commercial, transactional.'
+  parameters:
+  - name: keywords
+    type: list
+    description: 'target keywords
+
+      required field
+
+      UTF-8 encoding
+
+      maximum number of keywords you can specify in this array: 1000'
+    required: true
+    default: ''
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        Note: this endpoint\
+      \ currently supports the following languages only:\nar,\nzh-TW,\ncs,\nda,\n\
+      nl,\nen,\nfi,\nfr,\nde,\nhe,\nhi,\nit,\nja,\nko,\nms,\nnb,\npl,\npt,\nro,\n\
+      ru,\nes,\nsv,\nth,\nuk,\nvi,\nbg,\nhr,\nsr,\nsl,\nbs"
+    required: false
+    default: en
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_keywords_for_site
+  description: The Keywords For Site endpoint will provide you with a list of keywords
+    relevant to the target domain. Each keyword is supplied with relevant, search
+    volume data for the last month, cost-per-click, competition
+  parameters:
+  - name: target
+    type: str
+    description: target domain
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: limit
+    type: float
+    description: Maximum number of keywords to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: "offset in the results array of returned keywords\n        optional\
+      \ field\n        default value: 0\n        if you specify the 10 value, the\
+      \ first ten keywords in the results array will be omitted and the data will\
+      \ be provided for the successive keywords"
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n      \
+      \  you should set a logical operator and, or between the conditions\n      \
+      \  the following operators are supported:\n        regex, not_regex, <, <=,\
+      \ >, >=, =, <>, in, not_in, match, not_match, ilike, not_ilike, like, not_like\n\
+      \        you can use the % operator with like and not_like, as well as ilike\
+      \ and not_ilike to match any string of zero or more characters\n        merge\
+      \ operator must be a string and connect two other arrays, availible values:\
+      \ or, and.\n        example:\n      [\"keyword_info.search_volume\",\">\",0]\n\
+      [[\"keyword_info.search_volume\",\"in\",[0,1000]],\n\"and\",\n[\"keyword_info.competition_level\"\
+      ,\"=\",\"LOW\"]][[\"keyword_info.search_volume\",\">\",100],\n\"and\",\n[[\"\
+      keyword_info.cpc\",\"<\",0.5],\n\"or\",\n[\"keyword_info.high_top_of_page_bid\"\
+      ,\"<=\",0.5]]]"
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting parameter\ndefault rule:\n[\"relevance,desc\"]\nexample:\n[\"relevance,desc\"\
+      ,\"keyword_info.search_volume,desc\"]"
+    required: false
+    default: ''
+  - name: include_subdomains
+    type: bool
+    description: Include keywords from subdomains
+    required: false
+    default: ''
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_domain_intersection
+  description: This endpoint will provide you with the keywords for which both specified
+    domains rank within the same SERP. You will get search volume, competition, cost-per-click
+    and impressions data on each intersecting keyword. Along with that, you will get
+    data on the first and second domain's SERP element discovered for this keyword,
+    as well as the estimated traffic volume and cost of ad traffic.
+  parameters:
+  - name: target1
+    type: str
+    description: target domain 1
+    required: true
+    default: ''
+  - name: target2
+    type: str
+    description: 'target domain 2 '
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: ignore_synonyms
+    type: bool
+    description: ignore highly similar keywords, if set to true, results will be more
+      accurate
+    required: false
+    default: 'True'
+  - name: limit
+    type: float
+    description: Maximum number of keywords to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: "offset in the results array of returned keywords\n        optional\
+      \ field\n        default value: 0\n        if you specify the 10 value, the\
+      \ first ten keywords in the results array will be omitted and the data will\
+      \ be provided for the successive keywords"
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n      \
+      \  you should set a logical operator and, or between the conditions\n      \
+      \  the following operators are supported:\n        regex, not_regex, <, <=,\
+      \ >, >=, =, <>, in, not_in, match, not_match, ilike, not_ilike, like, not_like\n\
+      \        you can use the % operator with like and not_like, as well as ilike\
+      \ and not_ilike to match any string of zero or more characters\n        merge\
+      \ operator must be a string and connect two other arrays, availible values:\
+      \ or, and.\n        example:\n        [\"keyword_data.keyword_info.search_volume\"\
+      ,\"in\",[100,1000]]\n        [[\"first_domain_serp_element.etv\",\">\",0],\"\
+      and\",[\"first_domain_serp_element.description\",\"like\",\"%goat%\"]]\n   \
+      \     [[\"keyword_data.keyword_info.search_volume\",\">\",100],\"and\",[[\"\
+      first_domain_serp_element.description\",\"like\",\"%goat%\"],\"or\",[\"second_domain_serp_element.type\"\
+      ,\"=\",\"organic\"]]]"
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting parameter\nexample:\n[\"keyword_data.keyword_info.competition,desc\"\
+      ]\ndefault rule:\n[\"keyword_data.keyword_info.search_volume,desc\"]\nnote that\
+      \ you can set no more than three sorting rules in a single request\nyou should\
+      \ use a comma to separate several sorting rules\nexample:\n[\"keyword_data.keyword_info.search_volume,desc\"\
+      ,\"keyword_data.keyword_info.cpc,desc\"]"
+    required: false
+    default: ''
+  - name: intersections
+    type: bool
+    description: "domain intersections in SERP\noptional field\nif you set intersections\
+      \ to true, you will get the keywords for which both target domains specified\
+      \ as target1 and target2 have results within the same SERP; the corresponding\
+      \ SERP elements for both domains will be provided in the results array\nNote:\
+      \ this endpoint will not provide results if the number of intersecting keywords\
+      \ exceeds 10 million\nif you specify intersections: false, you will get the\
+      \ keywords for which the domain specified as target1 has results in SERP, and\
+      \ the domain specified as target2 doesn\u2019t;\nthus, the corresponding SERP\
+      \ elements and other data will be provided for the domain specified as target1only\n\
+      default value: true"
+    required: false
+    default: 'True'
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  - name: item_types
+    type: list
+    description: 'display results by item type
+
+      indicates the type of search results included in the response'
+    required: false
+    default: '[''organic'']'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_historical_rank_overview
+  description: This endpoint will provide you with historical data on rankings and
+    traffic of the specified domain, such as domain ranking distribution in SERPs
+    and estimated monthly traffic volume for both organic and paid results
+  parameters:
+  - name: target
+    type: str
+    description: target domain
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: ignore_synonyms
+    type: bool
+    description: ignore highly similar keywords, if set to true, results will be more
+      accurate
+    required: false
+    default: 'True'
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_page_intersection
+  description: 'This endpoint will provide you with the keywords for which specified
+    pages rank within the same SERP. You will get search volume, competition, cost-per-click
+    and impressions data on each intersecting keyword. Along with that, you will get
+    data on SERP elements that specified pages rank for in search results, as well
+    as the estimated traffic volume and cost of ad traffic. Page Intersection endpoint
+    supports organic, paid, local pack and featured snippet results.
+
+
+    Find keywords several webpages rank for:
+
+    If you would like to get the keywords several pages rank for, you need to specify
+    webpages only in the pages object. This way, you will receive intersected ranked
+    keywords for the specified URLs.
+
+
+    Find keywords your competitors rank for but you do not:
+
+    If you would like to receive all keywords several pages rank for, but particular
+    pages do not, you need to use the exclude_pages array as well. This way you will
+    receive the keywords for which the URLs from the pages object rank for, but the
+    URLs from the exclude_pages array do not'
+  parameters:
+  - name: pages
+    type: list
+    description: 'pages array
+
+      required field
+
+      you can set up to 20 pages in this object
+
+      the pages should be specified with absolute URLs (including http:// or https://)
+
+      if you specify a single page here, we will return results only for this page;
+
+      you can also use a wildcard (''*'') character to specify the search pattern
+
+      example:
+
+      "example.com"
+
+      search for the exact URL
+
+      "example.com/eng/*"
+
+      search for the example.com page and all its related URLs which start with ''/eng/'',
+      such as "example.com/eng/index.html" and "example.com/eng/help/", etc.
+
+      note: a wilcard should be placed after the slash (''/'') character in the end
+      of the URL, it is not possible to place it after the domain in the following
+      way:
+
+      https://dataforseo.com*
+
+      use https://dataforseo.com/* instead'
+    required: true
+    default: ''
+  - name: exclude_pages
+    type: list
+    description: "URLs of pages you want to exclude\noptional field\nyou can set up\
+      \ to 10 pages in this array\nif you use this array, results will contain the\
+      \ keywords for which URLs from the pages object rank, but URLs from exclude_pages\
+      \ array do not;\nnote that if you specify this field, the results will be based\
+      \ on the keywords any URL from pages ranks for regardless of intersections between\
+      \ them. However, you can set intersection_mode to intersect and results will\
+      \ contain the keywords all URLs from pages rank for in the same SERP and URLs\
+      \ from exclude_pages do not.\nuse a wildcard (\u2018*\u2019) character to specify\
+      \ the search pattern\nexample:\n\"exclude_pages\": [\n\"https://www.apple.com/iphone/*\"\
+      ,\n\"https://dataforseo.com/apis/*\",\n\"https://www.microsoft.com/en-us/industry/services/\"\
+      \n]"
+    required: false
+    default: ''
+  - name: intersection_mode
+    type: str
+    description: "indicates whether to intersect keywords\noptional field\nuse this\
+      \ field to intersect or merge results for the specified URLs\npossible values:\
+      \ union, intersect\n\nunion \u2013 results are based on all keywords any URL\
+      \ from pages rank for;\n\nintersect \u2013 results are based on the keywords\
+      \ all URLs from pages rank for in the same SERP:\n\nby default, results are\
+      \ based on the intersect mode if you specify only pages array. If you specify\
+      \ exclude_pages as well, results are based on the union mode"
+    required: false
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: ignore_synonyms
+    type: bool
+    description: ignore highly similar keywords, if set to true, results will be more
+      accurate
+    required: false
+    default: 'True'
+  - name: limit
+    type: float
+    description: Maximum number of keywords to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: "offset in the results array of returned keywords\n        optional\
+      \ field\n        default value: 0\n        if you specify the 10 value, the\
+      \ first ten keywords in the results array will be omitted and the data will\
+      \ be provided for the successive keywords"
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n      \
+      \  you should set a logical operator and, or between the conditions\n      \
+      \  the following operators are supported:\n        regex, not_regex, <, <=,\
+      \ >, >=, =, <>, in, not_in, match, not_match, ilike, not_ilike, like, not_like\n\
+      \        you can use the % operator with like and not_like, as well as ilike\
+      \ and not_ilike to match any string of zero or more characters\n        merge\
+      \ operator must be a string and connect two other arrays, availible values:\
+      \ or, and.\n        example:\n        [\"keyword_data.keyword_info.search_volume\"\
+      ,\"in\",[100,1000]]\n        [[\"intersection_result.1.etv\",\">\",0],\"and\"\
+      ,[\"intersection_result.2.description\",\"like\",\"%goat%\"]]\n        [[\"\
+      keyword_data.keyword_info.search_volume\",\">\",100],\"and\",[[\"intersection_result.1.description\"\
+      ,\"like\",\"%goat%\"],\"or\",[\"intersection_result.2.type\",\"=\",\"organic\"\
+      ]]]"
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting parameter\nexample:\n[\"keyword_data.keyword_info.competition,desc\"\
+      ]\ndefault rule:\n[\"keyword_data.keyword_info.search_volume,desc\"]\nnote that\
+      \ you can set no more than three sorting rules in a single request\nyou should\
+      \ use a comma to separate several sorting rules\nexample:\n[\"intersection_result.1.rank_group,asc\"\
+      ,\"intersection_result.2.rank_absolute,asc\"]"
+    required: false
+    default: ''
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  - name: item_types
+    type: list
+    description: 'display results by item type
+
+      indicates the type of search results included in the response'
+    required: false
+    default: '[''organic'']'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_bulk_traffic_estimation
+  description: This endpoint will provide you with estimated monthly traffic volumes
+    for up to 1,000 domains, subdomains, or webpages. Along with organic search traffic
+    estimations, you will also get separate values for paid search, featured snippet,
+    and local pack results.
+  parameters:
+  - name: targets
+    type: list
+    description: "target domains, subdomains, and webpages.\n        you can specify\
+      \ domains, subdomains, and webpages in this field;\ndomains and subdomains should\
+      \ be specified without https:// and www.;\npages should be specified with absolute\
+      \ URL, including https:// and www.;\nyou can set up to 1000 domains, subdomains\
+      \ or webpages"
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: ignore_synonyms
+    type: bool
+    description: ignore highly similar keywords, if set to true, results will be more
+      accurate
+    required: false
+    default: 'True'
+  - name: item_types
+    type: list
+    description: 'display results by item type
+
+      indicates the type of search results included in the response'
+    required: false
+    default: '[''organic'']'
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_available_filters
+  description: 'Here you will find all the necessary information about filters that
+    can be used with DataForSEO Labs API endpoints.
+
+
+    Please, keep in mind that filters are associated with a certain object in the
+    result array, and should be specified accordingly.'
+  parameters:
+  - name: tool
+    type: str
+    description: The name of the tool to get filters for
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_historical_keyword_data
+  description: This endpoint provides Google historical keyword data for specified
+    keywords, including search volume, cost-per-click, competition values for paid
+    search, monthly searches, and search volume trends. You can get historical keyword
+    data since August, 2021, depending on keywords along with location and language
+    combination
+  parameters:
+  - name: keywords
+    type: list
+    description: 'keywords
+
+      required field
+
+      The maximum number of keywords you can specify: 700
+
+      The maximum number of characters for each keyword: 80
+
+      The maximum number of words for each keyword phrase: 10
+
+      the specified keywords will be converted to lowercase format, data will be provided
+      in a separate array
+
+      note that if some of the keywords specified in this array are omitted in the
+      results you receive, then our database doesn''t contain such keywords and cannot
+      return data on them
+
+      you will not be charged for the keywords omitted in the results'
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  returns: ''
+  category: general
+  component: null
+- name: dataforseo_labs_google_relevant_pages
+  description: "This endpoint will provide you with rankings and traffic data for\
+    \ the web pages of the specified domain. You will be able to review each page\u2019\
+    s ranking distribution and estimated monthly traffic volume from both organic\
+    \ and paid searches."
+  parameters:
+  - name: target
+    type: str
+    description: target domain
+    required: true
+    default: ''
+  - name: location_name
+    type: str
+    description: 'full name of the location
+
+      required field
+
+      only in format "Country" (not "City" or "Region")
+
+      example:
+
+      ''United Kingdom'', ''United States'', ''Canada'''
+    required: false
+    default: United States
+  - name: language_code
+    type: str
+    description: "language code\n        required field\n        example:\n      \
+      \  en"
+    required: false
+    default: en
+  - name: ignore_synonyms
+    type: bool
+    description: ignore highly similar keywords, if set to true, results will be more
+      accurate
+    required: false
+    default: 'True'
+  - name: limit
+    type: float
+    description: Maximum number of keywords to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: "offset in the results array of returned keywords\n            optional\
+      \ field\n            default value: 0\n            if you specify the 10 value,\
+      \ the first ten keywords in the results array will be omitted and the data will\
+      \ be provided for the successive keywords"
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: "you can add several filters at once (8 filters maximum)\n      \
+      \      you should set a logical operator and, or between the conditions\n  \
+      \          the following operators are supported:\n            regex, not_regex,\
+      \ <, <=, >, >=, =, <>, in, not_in, match, not_match, ilike, not_ilike, like,\
+      \ not_like\n            you can use the % operator with like and not_like, as\
+      \ well as ilike and not_ilike to match any string of zero or more characters\n\
+      \            merge operator must be a string and connect two other arrays, availible\
+      \ values: or, and.\n            example:\n[\"metrics.organic.count\",\">\",50]\n\
+      [[\"metrics.organic.pos_1\",\"<>\",0],\"and\",[\"metrics.organic.impressions_etv\"\
+      ,\">=\",\"10\"]]\n\n[[[\"metrics.organic.count\",\">=\",50],\"and\",[\"metrics.organic.pos_1\"\
+      ,\"in\",[1,5]]],\n\"or\",\n[\"metrics.organic.etv\",\">=\",\"100\"]]"
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to specify\
+      \ a sorting type\nexample:\n[\"metrics.paid.etv,asc\"]\nNote: you can set no\
+      \ more than three sorting rules in a single request\nyou should use a comma\
+      \ to separate several sorting rules\nexample:\n[\"metrics.organic.etv,desc\"\
+      ,\"metrics.paid.count,asc\"]\ndefault rule:\n[\"metrics.organic.count,desc\"\
+      ]"
+    required: false
+    default: ''
+  - name: exclude_top_domains
+    type: bool
+    description: "indicates whether to exclude world\u2019s largest websites\noptional\
+      \ field\ndefault value: false\nset to true if you want to get highly-relevant\
+      \ competitors excluding the top websites"
+    required: false
+    default: 'True'
+  - name: item_types
+    type: list
+    description: 'display results by item type
+
+      indicates the type of search results included in the response'
+    required: false
+    default: '[''organic'']'
+  - name: include_clickstream_data
+    type: bool
+    description: Include or exclude data from clickstream-based metrics in the result
+    required: false
+    default: 'False'
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_backlinks
+  description: This endpoint will provide you with a list of backlinks and relevant
+    data for the specified domain, subdomain, or webpage
+  parameters:
+  - name: target
+    type: str
+    description: "domain, subdomain or webpage to get backlinks for\n        required\
+      \ field\na domain or a subdomain should be specified without https:// and www.\n\
+      a page should be specified with absolute URL (including http:// or https://)"
+    required: true
+    default: ''
+  - name: mode
+    type: str
+    description: "results grouping type\noptional field\npossible grouping types:\n\
+      as_is \u2013 returns all backlinks\none_per_domain \u2013 returns one backlink\
+      \ per domain\none_per_anchor \u2013 returns one backlink per anchor\ndefault\
+      \ value: as_is"
+    required: false
+    default: as_is
+  - name: limit
+    type: float
+    description: the maximum number of returned backlinks
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: 'offset in the results array of the returned backlinks
+
+      optional field
+
+      default value: 0
+
+      if you specify the 10 value, the first ten backlinks in the results array will
+      be omitted and the data will be provided for the successive backlinks'
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: 'array of results filtering parameters
+
+      optional field
+
+      you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      =, <>, in, not_in, like, not_like, ilike, not_ilike, regex, not_regex, match,
+      not_match
+
+      you can use the % operator with like and not_like to match any string of zero
+      or more characters
+
+      example:
+
+      ["rank",">","80"]
+
+      [["page_from_rank",">","55"],
+
+      "and",
+
+      ["dofollow","=",true]]
+
+
+      [["first_seen",">","2017-10-23 11:31:45 +00:00"],
+
+      "and",
+
+      [["anchor","like","%seo%"],"or",["text_pre","like","%seo%"]]]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"rank,desc\"]\nnote that you can set no more than\
+      \ three sorting rules in a single request\nyou should use a comma to separate\
+      \ several sorting rules\nexample:\n[\"domain_from_rank,desc\",\"page_from_rank,asc\"\
+      ]"
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_anchors
+  description: This endpoint will provide you with a detailed overview of anchors
+    used when linking to the specified website with relevant backlink data for each
+    of them
+  parameters:
+  - name: target
+    type: str
+    description: "domain, subdomain or webpage to get backlinks for\n        required\
+      \ field\na domain or a subdomain should be specified without https:// and www.\n\
+      a page should be specified with absolute URL (including http:// or https://)"
+    required: true
+    default: ''
+  - name: limit
+    type: float
+    description: the maximum number of returned anchors
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: 'offset in the results array of returned anchors
+
+      optional field
+
+      default value: 0
+
+      if you specify the 10 value, the first ten anchors in the results array will
+      be omitted and the data will be provided for the successive anchors'
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: 'array of results filtering parameters
+
+      optional field
+
+      you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      =, <>, in, not_in, like, not_like, ilike, not_ilike, regex, not_regex, match,
+      not_match
+
+      you can use the % operator with like and not_like to match any string of zero
+      or more characters
+
+      example:
+
+      ["rank",">","80"]
+
+      [["page_from_rank",">","55"],
+
+      "and",
+
+      ["dofollow","=",true]]
+
+
+      [["first_seen",">","2017-10-23 11:31:45 +00:00"],
+
+      "and",
+
+      [["anchor","like","%seo%"],"or",["text_pre","like","%seo%"]]]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"rank,desc\"]\nnote that you can set no more than\
+      \ three sorting rules in a single request\nyou should use a comma to separate\
+      \ several sorting rules\nexample:\n[\"domain_from_rank,desc\",\"page_from_rank,asc\"\
+      ]"
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_bulk_backlinks
+  description: 'This endpoint will provide you with the number of backlinks pointing
+    to domains, subdomains, and pages specified in the targets array. The returned
+    numbers correspond to all live backlinks, that is, total number of referring links
+    with all attributes (e.g., nofollow, noreferrer, ugc, sponsored etc) that were
+    found during the latest check.
+
+    Note that if you indicate a domain as a target, you will get results for the root
+    domain (domain with all of its subdomains), e.g. dataforseo.com and app.dataforseo.com'
+  parameters:
+  - name: targets
+    type: list
+    description: 'domains, subdomains or webpages to get rank for
+
+      required field
+
+      you can set up to 1000 domains, subdomains or webpages
+
+      the domain or subdomain should be specified without https:// and www.
+
+      the page should be specified with absolute URL (including http:// or https://)
+
+      example:
+
+      "targets": [
+
+      "forbes.com",
+
+      "cnn.com",
+
+      "bbc.com",
+
+      "yelp.com",
+
+      "https://www.apple.com/iphone/",
+
+      "https://ahrefs.com/blog/",
+
+      "ibm.com",
+
+      "https://variety.com/",
+
+      "https://stackoverflow.com/",
+
+      "www.trustpilot.com"
+
+      ]'
+    required: true
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_bulk_new_lost_referring_domains
+  description: 'This endpoint will provide you with the number of referring domains
+    pointing to the domains, subdomains and pages specified in the targets array.
+
+    Note that if you indicate a domain as a target, you will get result for the root
+    domain (domain with all of its subdomains), e.g. dataforseo.com and app.dataforseo.com'
+  parameters:
+  - name: targets
+    type: list
+    description: 'domains, subdomains or webpages to get rank for
+
+      required field
+
+      you can set up to 1000 domains, subdomains or webpages
+
+      the domain or subdomain should be specified without https:// and www.
+
+      the page should be specified with absolute URL (including http:// or https://)
+
+      example:
+
+      "targets": [
+
+      "forbes.com",
+
+      "cnn.com",
+
+      "bbc.com",
+
+      "yelp.com",
+
+      "https://www.apple.com/iphone/",
+
+      "https://ahrefs.com/blog/",
+
+      "ibm.com",
+
+      "https://variety.com/",
+
+      "https://stackoverflow.com/",
+
+      "www.trustpilot.com"
+
+      ]'
+    required: true
+    default: ''
+  - name: date_from
+    type: str
+    description: "starting date of the time range\noptional field\nthis field indicates\
+      \ the date which will be used as a threshold for new and lost backlinks;\nthe\
+      \ backlinks that appeared in our index after the specified date will be considered\
+      \ as new;\nthe backlinks that weren\u2019t found after the specified date, but\
+      \ were present before, will be considered as lost;\ndefault value: today\u2019\
+      s date -(minus) one month;\ne.g. if today is 2021-10-13, default date_from will\
+      \ be 2021-09-13.\nminimum value equals today\u2019s date -(minus) one year;\n\
+      e.g. if today is 2021-10-13, minimum date_from will be 2020-10-13.\n\ndate format:\
+      \ \"yyyy-mm-dd\"\nexample:\n\"2021-01-01\""
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_bulk_new_lost_backlinks
+  description: 'This endpoint will provide you with the number of referring domains
+    pointing to domains, subdomains, and pages specified in the targets array. The
+    returned numbers are based on all live referring domains, that is, total number
+    of domains pointing to the target with any type of backlinks (e.g., nofollow,
+    noreferrer, ugc, sponsored etc) that were found during the latest check.
+
+    Note that if you indicate a domain as a target, you will get result for the root
+    domain (domain with all of its subdomains), e.g. dataforseo.com and app.dataforseo.com'
+  parameters:
+  - name: targets
+    type: list
+    description: 'domains, subdomains or webpages to get rank for
+
+      required field
+
+      you can set up to 1000 domains, subdomains or webpages
+
+      the domain or subdomain should be specified without https:// and www.
+
+      the page should be specified with absolute URL (including http:// or https://)
+
+      example:
+
+      "targets": [
+
+      "forbes.com",
+
+      "cnn.com",
+
+      "bbc.com",
+
+      "yelp.com",
+
+      "https://www.apple.com/iphone/",
+
+      "https://ahrefs.com/blog/",
+
+      "ibm.com",
+
+      "https://variety.com/",
+
+      "https://stackoverflow.com/",
+
+      "www.trustpilot.com"
+
+      ]'
+    required: true
+    default: ''
+  - name: date_from
+    type: str
+    description: "starting date of the time range\noptional field\nthis field indicates\
+      \ the date which will be used as a threshold for new and lost backlinks;\nthe\
+      \ backlinks that appeared in our index after the specified date will be considered\
+      \ as new;\nthe backlinks that weren\u2019t found after the specified date, but\
+      \ were present before, will be considered as lost;\ndefault value: today\u2019\
+      s date -(minus) one month;\ne.g. if today is 2021-10-13, default date_from will\
+      \ be 2021-09-13.\nminimum value equals today\u2019s date -(minus) one year;\n\
+      e.g. if today is 2021-10-13, minimum date_from will be 2020-10-13.\n\ndate format:\
+      \ \"yyyy-mm-dd\"\nexample:\n\"2021-01-01\""
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_bulk_ranks
+  description: "This endpoint will provide you with rank scores of the domains, subdomains,\
+    \ and pages specified in the targets array. The score is based on the number of\
+    \ referring domains pointing to the specified domains, subdomains, or pages. The\
+    \ rank values represent real-time data for the date of the request and range from\
+    \ 0 (no backlinks detected) to 1,000 (highest rank). A similar scoring system\
+    \ is used in Google\u2019s Page Rank algorithm"
+  parameters:
+  - name: targets
+    type: list
+    description: 'domains, subdomains or webpages to get rank for
+
+      required field
+
+      you can set up to 1000 domains, subdomains or webpages
+
+      the domain or subdomain should be specified without https:// and www.
+
+      the page should be specified with absolute URL (including http:// or https://)
+
+      example:
+
+      "targets": [
+
+      "forbes.com",
+
+      "cnn.com",
+
+      "bbc.com",
+
+      "yelp.com",
+
+      "https://www.apple.com/iphone/",
+
+      "https://ahrefs.com/blog/",
+
+      "ibm.com",
+
+      "https://variety.com/",
+
+      "https://stackoverflow.com/",
+
+      "www.trustpilot.com"
+
+      ]'
+    required: true
+    default: ''
+  - name: rank_scale
+    type: str
+    description: "defines the scale used for calculating and displaying the rank,\
+      \ domain_from_rank, and page_from_rank values\noptional field\nyou can use this\
+      \ parameter to choose whether rank values are presented on a 0\u2013100 or 0\u2013\
+      1000 scale\npossible values:\none_hundred \u2014 rank values are displayed on\
+      \ a 0\u2013100 scale\none_thousand \u2014 rank values are displayed on a 0\u2013\
+      1000 scale"
+    required: false
+    default: one_thousand
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_bulk_referring_domains
+  description: 'This endpoint will provide you with the number of referring domains
+    pointing to domains, subdomains, and pages specified in the targets array. The
+    returned numbers are based on all live referring domains, that is, total number
+    of domains pointing to the target with any type of backlinks (e.g., nofollow,
+    noreferrer, ugc, sponsored etc) that were found during the latest check.
+
+    Note that if you indicate a domain as a target, you will get result for the root
+    domain (domain with all of its subdomains), e.g. dataforseo.com and app.dataforseo.com'
+  parameters:
+  - name: targets
+    type: list
+    description: 'domains, subdomains or webpages to get rank for
+
+      required field
+
+      you can set up to 1000 domains, subdomains or webpages
+
+      the domain or subdomain should be specified without https:// and www.
+
+      the page should be specified with absolute URL (including http:// or https://)
+
+      example:
+
+      "targets": [
+
+      "forbes.com",
+
+      "cnn.com",
+
+      "bbc.com",
+
+      "yelp.com",
+
+      "https://www.apple.com/iphone/",
+
+      "https://ahrefs.com/blog/",
+
+      "ibm.com",
+
+      "https://variety.com/",
+
+      "https://stackoverflow.com/",
+
+      "www.trustpilot.com"
+
+      ]'
+    required: true
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_bulk_spam_score
+  description: "This endpoint will provide you with spam scores of the domains, subdomains,\
+    \ and pages you specified in the targets array. Spam Score is DataForSEO\u2019\
+    s proprietary metric that indicates how \u201Cspammy\u201D your target is on a\
+    \ scale from 0 to 100"
+  parameters:
+  - name: targets
+    type: list
+    description: 'domains, subdomains or webpages to get rank for
+
+      required field
+
+      you can set up to 1000 domains, subdomains or webpages
+
+      the domain or subdomain should be specified without https:// and www.
+
+      the page should be specified with absolute URL (including http:// or https://)
+
+      example:
+
+      "targets": [
+
+      "forbes.com",
+
+      "cnn.com",
+
+      "bbc.com",
+
+      "yelp.com",
+
+      "https://www.apple.com/iphone/",
+
+      "https://ahrefs.com/blog/",
+
+      "ibm.com",
+
+      "https://variety.com/",
+
+      "https://stackoverflow.com/",
+
+      "www.trustpilot.com"
+
+      ]'
+    required: true
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_competitors
+  description: This endpoint will provide you with a list of competitors that share
+    some part of the backlink profile with a target website, along with a number of
+    backlink intersections and the rank of every competing website
+  parameters:
+  - name: target
+    type: str
+    description: "domain, subdomain or webpage to get backlinks for\n        required\
+      \ field\na domain or a subdomain should be specified without https:// and www.\n\
+      a page should be specified with absolute URL (including http:// or https://)"
+    required: true
+    default: ''
+  - name: limit
+    type: float
+    description: the maximum number of returned domains
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: 'offset in the results array of returned networks
+
+      optional field
+
+      default value: 0
+
+      if you specify the 10 value, the first ten domains in the results array will
+      be omitted and the data will be provided for the successive pages'
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: 'array of results filtering parameters
+
+      optional field
+
+      you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      regex, not_regex, =, <>, in, not_in, like, not_like, ilike, not_ilike, match,
+      not_match
+
+      you can use the % operator with like and not_like to match any string of zero
+      or more characters
+
+      example:
+
+      ["rank",">","100"]
+
+      [["target","like","%forbes%"],
+
+      "and",
+
+      [["rank",">","100"],"or",["intersections",">","5"]]]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"rank,desc\"]\nnote that you can set no more than\
+      \ three sorting rules in a single request\nyou should use a comma to separate\
+      \ several sorting rules\nexample:\n[\"intersections,desc\",\"rank,asc\"]"
+    required: false
+    default: ''
+  - name: main_domain
+    type: bool
+    description: 'indicates if only main domain of the target will be included in
+      the search
+
+      if set to true, only the main domain will be included in search'
+    required: false
+    default: 'True'
+  - name: exclude_large_domains
+    type: bool
+    description: 'indicates whether large domain will appear in results
+
+      if set to true, the results from the large domain (google.com, amazon.com, etc.)
+      will be omitted'
+    required: false
+    default: 'True'
+  - name: exclude_internal_backlinks
+    type: bool
+    description: 'indicates if internal backlinks from subdomains to the target will
+      be excluded from the results
+
+      if set to true, the results will not include data on internal backlinks from
+      subdomains of the same domain as target
+
+      if set to false, internal links will be included in the results'
+    required: false
+    default: 'True'
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_domain_intersection
+  description: This endpoint will provide you with the list of domains pointing to
+    the specified websites. This endpoint is especially useful for creating a Link
+    Gap feature that shows what domains link to your competitors but do not link out
+    to your website
+  parameters:
+  - name: targets
+    type: list
+    description: 'domains, subdomains or webpages to get links for
+
+      required field
+
+      you can set up to 20 domains, subdomains or webpages
+
+      a domain or a subdomain should be specified without https:// and www.
+
+      a page should be specified with absolute URL (including http:// or https://)'
+    required: true
+    default: ''
+  - name: limit
+    type: float
+    description: the maximum number of returned results
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: 'offset in the array of returned results
+
+      optional field
+
+      default value: 0
+
+      if you specify the 10 value, the first ten backlinks in the results array will
+      be omitted and the data will be provided for the successive backlinks'
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: 'array of results filtering parameters
+
+      optional field
+
+      you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      regex, not_regex, =, <>, in, not_in, like, not_like, ilike, not_ilike, match,
+      not_match
+
+      you can use the % operator with like and not_like to match any string of zero
+      or more characters
+
+      example:
+
+      ["1.internal_links_count",">","1"]
+
+      [["2.referring_pages",">","2"],
+
+      "and",
+
+      ["1.backlinks",">","10"]]
+
+
+      [["1.first_seen",">","2017-10-23 11:31:45 +00:00"],
+
+      "and",
+
+      [["2.target","like","%dataforseo.com%"],"or",["1.referring_domains",">","10"]]]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"backlinks,desc\"]\nnote that you can set no more\
+      \ than three sorting rules in a single request\nyou should use a comma to separate\
+      \ several sorting rules\nexample:\n[\"backlinks,desc\",\"rank,asc\"]"
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_domain_pages_summary
+  description: This endpoint will provide you with detailed summary data on all backlinks
+    and related metrics for each page of the target domain or subdomain you specify.
+    If you indicate a single page as a target, you will get comprehensive summary
+    data on all backlinks for that page
+  parameters:
+  - name: target
+    type: str
+    description: "domain, subdomain or webpage to get backlinks for\n        required\
+      \ field\na domain or a subdomain should be specified without https:// and www.\n\
+      a page should be specified with absolute URL (including http:// or https://)"
+    required: true
+    default: ''
+  - name: limit
+    type: float
+    description: the maximum number of returned anchors
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: 'offset in the results array of returned anchors
+
+      optional field
+
+      default value: 0
+
+      if you specify the 10 value, the first ten anchors in the results array will
+      be omitted and the data will be provided for the successive anchors'
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: 'array of results filtering parameters
+
+      optional field
+
+      you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      regex, not_regex, =, <>, in, not_in, like, not_like, ilike, not_ilike, match,
+      not_match
+
+      you can use the % operator with like and not_like to match any string of zero
+      or more characters
+
+      example:
+
+      ["referring_links_types.anchors",">","1"]
+
+      [["broken_pages",">","2"],
+
+      "and",
+
+      ["backlinks",">","10"]]
+
+
+      [["first_seen",">","2017-10-23 11:31:45 +00:00"],
+
+      "and",
+
+      [["anchor","like","%seo%"],"or",["referring_domains",">","10"]]]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"backlinks,desc\"]\nnote that you can set no more\
+      \ than three sorting rules in a single request\nyou should use a comma to separate\
+      \ several sorting rules\nexample:\n[\"backlinks,desc\",\"rank,asc\"]"
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_domain_pages
+  description: This endpoint will provide you with a detailed overview of domain pages
+    with backlink data for each page
+  parameters:
+  - name: target
+    type: str
+    description: "domain, subdomain or webpage to get backlinks for\n        required\
+      \ field\na domain or a subdomain should be specified without https:// and www.\n\
+      a page should be specified with absolute URL (including http:// or https://)"
+    required: true
+    default: ''
+  - name: limit
+    type: float
+    description: the maximum number of returned pages
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: 'offset in the results array of returned pages
+
+      optional field
+
+      default value: 0
+
+      if you specify the 10 value, the first ten pages in the results array will be
+      omitted and the data will be provided for the successive pages'
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: 'array of results filtering parameters
+
+      optional field
+
+      you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      regex, not_regex, =, <>, in, not_in, like, not_like, ilike, not_ilike, match,
+      not_match
+
+      you can use the % operator with like and not_like to match any string of zero
+      or more characters
+
+      example:
+
+      ["meta.internal_links_count",">","1"]
+
+      [["meta.external_links_count",">","2"],
+
+      "and",
+
+      ["backlinks",">","10"]]
+
+
+      [["first_visited",">","2017-10-23 11:31:45 +00:00"],
+
+      "and",
+
+      [["title","like","%seo%"],"or",["referring_domains",">","10"]]]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"page_summary.backlinks,desc\"]\nnote that you can\
+      \ set no more than three sorting rules in a single request\nyou should use a\
+      \ comma to separate several sorting rules\nexample:\n[\"page_summary.backlinks,desc\"\
+      ,\"page_summary.rank,asc\"]"
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_page_intersection
+  description: This endpoint will provide you with the list of domains pointing to
+    the specified websites. This endpoint is especially useful for creating a Link
+    Gap feature that shows what domains link to your competitors but do not link out
+    to your website
+  parameters:
+  - name: targets
+    type: list
+    description: 'domains, subdomains or webpages to get links for
+
+      required field
+
+      you can set up to 20 domains, subdomains or webpages
+
+      a domain or a subdomain should be specified without https:// and www.
+
+      a page should be specified with absolute URL (including http:// or https://)'
+    required: true
+    default: ''
+  - name: limit
+    type: float
+    description: the maximum number of returned results
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: 'offset in the array of returned results
+
+      optional field
+
+      default value: 0
+
+      if you specify the 10 value, the first ten backlinks in the results array will
+      be omitted and the data will be provided for the successive backlinks'
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: 'array of results filtering parameters
+
+      optional field
+
+      you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      regex, not_regex, =, <>, in, not_in, like, not_like, ilike, not_ilike, match,
+      not_match
+
+      you can use the % operator with like and not_like to match any string of zero
+      or more characters
+
+      example:
+
+      ["1.rank",">","80"]
+
+      [["2.page_from_rank",">","55"],
+
+      "and",
+
+      ["1.original","=","true"]]
+
+
+      [["1.first_seen",">","2017-10-23 11:31:45 +00:00"],
+
+      "and",
+
+      [["1.anchor","like","%seo%"],"or",["1.text_pre","not_like","%seo%"]]]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"rank,desc\"]\nnote that you can set no more than\
+      \ three sorting rules in a single request\nyou should use a comma to separate\
+      \ several sorting rules\nexample:\n[\"domain_from_rank,desc\",\"page_from_rank,asc\"\
+      ]"
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_referring_domains
+  description: This endpoint will provide you with a detailed overview of referring
+    domains pointing to the target you specify
+  parameters:
+  - name: target
+    type: str
+    description: "domain, subdomain or webpage to get backlinks for\n        required\
+      \ field\na domain or a subdomain should be specified without https:// and www.\n\
+      a page should be specified with absolute URL (including http:// or https://)"
+    required: true
+    default: ''
+  - name: limit
+    type: float
+    description: the maximum number of returned pages
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: 'offset in the results array of returned pages
+
+      optional field
+
+      default value: 0
+
+      if you specify the 10 value, the first ten pages in the results array will be
+      omitted and the data will be provided for the successive pages'
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: 'array of results filtering parameters
+
+      optional field
+
+      you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      regex, not_regex, =, <>, in, not_in, like, not_like, ilike, not_ilike, match,
+      not_match
+
+      you can use the % operator with like and not_like to match any string of zero
+      or more characters
+
+      example:
+
+      ["meta.internal_links_count",">","1"]
+
+      [["meta.external_links_count",">","2"],
+
+      "and",
+
+      ["backlinks",">","10"]]
+
+
+      [["first_visited",">","2017-10-23 11:31:45 +00:00"],
+
+      "and",
+
+      [["title","like","%seo%"],"or",["referring_domains",">","10"]]]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"page_summary.backlinks,desc\"]\nnote that you can\
+      \ set no more than three sorting rules in a single request\nyou should use a\
+      \ comma to separate several sorting rules\nexample:\n[\"page_summary.backlinks,desc\"\
+      ,\"page_summary.rank,asc\"]"
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_referring_networks
+  description: This endpoint will provide you with a detailed overview of referring
+    domains pointing to the target you specify
+  parameters:
+  - name: target
+    type: str
+    description: "domain, subdomain or webpage to get backlinks for\n        required\
+      \ field\na domain or a subdomain should be specified without https:// and www.\n\
+      a page should be specified with absolute URL (including http:// or https://)"
+    required: true
+    default: ''
+  - name: network_address_type
+    type: str
+    description: 'indicates the type of network to get data for
+
+      optional field
+
+      possible values: ip, subnet
+
+      default value: ip'
+    required: false
+    default: ip
+  - name: limit
+    type: float
+    description: the maximum number of returned networks
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: 'offset in the results array of returned networks
+
+      optional field
+
+      default value: 0
+
+      if you specify the 10 value, the first ten domains in the results array will
+      be omitted and the data will be provided for the successive pages'
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: 'array of results filtering parameters
+
+      optional field
+
+      you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      regex, not_regex, =, <>, in, not_in, like, not_like, ilike, not_ilike, match,
+      not_match
+
+      you can use the % operator with like and not_like to match any string of zero
+      or more characters
+
+      example:
+
+      ["referring_pages",">","1"]
+
+      [["referring_pages",">","2"],
+
+      "and",
+
+      ["backlinks",">","10"]]
+
+
+      [["first_seen",">","2017-10-23 11:31:45 +00:00"],
+
+      "and",
+
+      [["network_address","like","194.1.%"],"or",["referring_ips",">","10"]]]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"backlinks,desc\"]\nnote that you can set no more\
+      \ than three sorting rules in a single request\nyou should use a comma to separate\
+      \ several sorting rules\nexample:\n[\"backlinks,desc\",\"rank,asc\"]"
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_summary
+  description: This endpoint will provide you with an overview of backlinks data available
+    for a given domain, subdomain, or webpage
+  parameters:
+  - name: target
+    type: str
+    description: "domain, subdomain or webpage to get backlinks for\n        required\
+      \ field\na domain or a subdomain should be specified without https:// and www.\n\
+      a page should be specified with absolute URL (including http:// or https://)"
+    required: true
+    default: ''
+  - name: include_subdomains
+    type: bool
+    description: 'indicates if indirect links to the target will be included in the
+      results
+
+      if set to true, the results will include data on indirect links pointing to
+      a page that either redirects to the target, or points to a canonical page
+
+      if set to false, indirect links will be ignored'
+    required: false
+    default: 'True'
+  - name: exclude_internal_backlinks
+    type: bool
+    description: 'indicates if internal backlinks from subdomains to the target will
+      be excluded from the results
+
+      if set to true, the results will not include data on internal backlinks from
+      subdomains of the same domain as target
+
+      if set to false, internal links will be included in the results'
+    required: false
+    default: 'True'
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_timeseries_new_lost_summary
+  description: 'This endpoint will provide you with the number of new and lost backlinks
+    and referring domains for the domain specified in the target field.
+
+    The results will be provided for a period between the two indicated dates, and
+    metrics will be grouped by the time range that you define: day, week, month, or
+    year.
+
+    Data from this endpoint will be especially helpful for building time-series graphs
+    of new and lost backlinks and referring domains.
+
+
+    '
+  parameters:
+  - name: target
+    type: str
+    description: 'domain to get data for
+
+      required field
+
+      a domain should be specified without https:// and www.
+
+      example:
+
+      "forbes.com"'
+    required: true
+    default: ''
+  - name: date_from
+    type: str
+    description: "starting date of the time range\noptional field\nthis field indicates\
+      \ the date which will be used as a threshold for summary data;\nminimum value:\
+      \ 2019-01-30\nmaximum value shouldn\u2019t exceed the date specified in the\
+      \ date_to\ndate format: \"yyyy-mm-dd\"\nexample:\n\"2021-01-01\""
+    required: false
+    default: ''
+  - name: date_to
+    type: str
+    description: "ending date of the time range\noptional field\nif you don\u2019\
+      t specify this field, the today\u2019s date will be used by default\nminimum\
+      \ value shouldn\u2019t preceed the date specified in the date_from\nmaximum\
+      \ value: today\u2019s date\ndate format: \"yyyy-mm-dd\"\nexample:\n\"2021-01-15\""
+    required: false
+    default: ''
+  - name: group_range
+    type: str
+    description: 'time range which will be used to group the results
+
+      optional field
+
+      default value: month
+
+      possible values: day, week, month, year
+
+      note: for day, we will return items corresponding to all dates between and including
+      date_from and date_to;
+
+      for week/month/year, we will return items corresponding to full weeks/months/years,
+      where each item will indicate the last day of the week/month/year
+
+
+      for example, if you specify:
+
+      "group_range": "month",
+
+      "date_from": "2022-03-23",
+
+      "date_to": "2022-05-13"
+
+      we will return items falling between 2022-03-01 and 2022-05-31, namely, three
+      items corresponding to the following dates: 2022-03-31, 2022-04-30, 2022-05-31
+
+
+      if there is no data for a certain day/week/month/year, we will return 0'
+    required: false
+    default: month
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_timeseries_summary
+  description: 'This endpoint will provide you with an overview of backlink data for
+    the target domain available during a period between the two indicated dates. Backlink
+    metrics will be grouped by the time range that you define: day, week, month, or
+    year.
+
+    Data from this endpoint will be especially helpful for building time-series graphs
+    of daily, weekly, monthly, and yearly link-building progress'
+  parameters:
+  - name: target
+    type: str
+    description: 'domain to get data for
+
+      required field
+
+      a domain should be specified without https:// and www.
+
+      example:
+
+      "forbes.com"'
+    required: true
+    default: ''
+  - name: date_from
+    type: str
+    description: "starting date of the time range\noptional field\nthis field indicates\
+      \ the date which will be used as a threshold for summary data;\nminimum value:\
+      \ 2019-01-30\nmaximum value shouldn\u2019t exceed the date specified in the\
+      \ date_to\ndate format: \"yyyy-mm-dd\"\nexample:\n\"2021-01-01\""
+    required: false
+    default: ''
+  - name: date_to
+    type: str
+    description: "ending date of the time range\noptional field\nif you don\u2019\
+      t specify this field, the today\u2019s date will be used by default\nminimum\
+      \ value shouldn\u2019t preceed the date specified in the date_from\nmaximum\
+      \ value: today\u2019s date\ndate format: \"yyyy-mm-dd\"\nexample:\n\"2021-01-15\""
+    required: false
+    default: ''
+  - name: group_range
+    type: str
+    description: 'time range which will be used to group the results
+
+      optional field
+
+      default value: month
+
+      possible values: day, week, month, year
+
+      note: for day, we will return items corresponding to all dates between and including
+      date_from and date_to;
+
+      for week/month/year, we will return items corresponding to full weeks/months/years,
+      where each item will indicate the last day of the week/month/year
+
+
+      for example, if you specify:
+
+      "group_range": "month",
+
+      "date_from": "2022-03-23",
+
+      "date_to": "2022-05-13"
+
+      we will return items falling between 2022-03-01 and 2022-05-31, namely, three
+      items corresponding to the following dates: 2022-03-31, 2022-04-30, 2022-05-31
+
+
+      if there is no data for a certain day/week/month/year, we will return 0'
+    required: false
+    default: month
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_bulk_pages_summary
+  description: This endpoint will provide you with a comprehensive overview of backlinks
+    and related data for a bulk of up to 1000 pages, domains, or subdomains. If you
+    indicate a single page as a target, you will get comprehensive summary data on
+    all backlinks for that page.
+  parameters:
+  - name: targets
+    type: list
+    description: 'domains, subdomains or webpages to get summary data for
+
+      required field
+
+      a domain or a subdomain should be specified without https:// and www.
+
+      a page should be specified with absolute URL (including http:// or https://)
+
+      you can specify up to 1000 pages, domains, or subdomains in each request.
+
+      note that the URLs you set in a single request cannot belong to more than 100
+      different domains.'
+    required: true
+    default: ''
+  - name: include_subdomains
+    type: bool
+    description: 'indicates if indirect links to the target will be included in the
+      results
+
+      if set to true, the results will include data on indirect links pointing to
+      a page that either redirects to the target, or points to a canonical page
+
+      if set to false, indirect links will be ignored'
+    required: false
+    default: 'True'
+  returns: ''
+  category: general
+  component: null
+- name: backlinks_available_filters
+  description: 'Here you will find all the necessary information about filters that
+    can be used with DataForSEO Backlinks API endpoints.
+
+
+    Please, keep in mind that filters are associated with a certain object in the
+    result array, and should be specified accordingly.'
+  parameters:
+  - name: tool
+    type: str
+    description: The name of the tool to get filters for
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: business_data_business_listings_search
+  description: Business Listings Search API provides results containing information
+    about business entities listed on Google Maps in the specified categories. You
+    will receive the address, contacts, rating, working hours, and other relevant
+    data
+  parameters:
+  - name: description
+    type: str
+    description: 'description of the element in SERP
+
+      optional field
+
+      the description of the business entity for which the results are collected;
+
+      can contain up to 200 characters'
+    required: false
+    default: ''
+  - name: title
+    type: str
+    description: 'title of the element in SERP
+
+      optional field
+
+      the name of the business entity for which the results are collected;
+
+      can contain up to 200 characters'
+    required: false
+    default: ''
+  - name: categories
+    type: list
+    description: "business categories\nthe categories you specify are used to search\
+      \ for business listings;\nif you don\u2019t use this field, we will return business\
+      \ listings found in the specified location;\nyou can specify up to 10 categories"
+    required: false
+    default: ''
+  - name: location_coordinate
+    type: str
+    description: "GPS coordinates of a location\noptional field\nlocation_coordinate\
+      \ parameter should be specified in the \u201Clatitude,longitude,radius\u201D\
+      \ format\nthe maximum number of decimal digits for \u201Clatitude\u201D and\
+      \ \u201Clongitude\u201D: 7\nthe value of \u201Cradius\u201D is specified in\
+      \ kilometres (km)\nthe minimum value for \u201Cradius\u201D: 1\nthe maximum\
+      \ value for \u201Cradius\u201D: 100000\nexample:\n53.476225,-2.243572,200"
+    required: false
+    default: ''
+  - name: limit
+    type: float
+    description: the maximum number of returned businesses
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: 'offset in the results array of returned businesses
+
+      optional field
+
+      default value: 0
+
+      if you specify the 10 value, the first ten entities in the results array will
+      be omitted and the data will be provided for the successive entities'
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: 'array of results filtering parameters
+
+      optional field
+
+      you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      regex, not_regex, <, <=, >, >=, =, <>, in, not_in, like, not_like, match, not_match
+
+      you can use the % operator with like and not_like to match any string of zero
+      or more characters
+
+      example:
+
+      ["rating.value",">",3]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting parameter\nexample:\n[\"rating.value,desc\"]note that you can set\
+      \ no more than three sorting rules in a single request\nyou should use a comma\
+      \ to separate several sorting rules\nexample:\n[\"rating.value,desc\",\"rating.votes_count,desc\"\
+      ]"
+    required: false
+    default: ''
+  - name: is_claimed
+    type: bool
+    description: indicates whether the business is verified by its owner on Google
+      Maps
+    required: false
+    default: 'True'
+  returns: ''
+  category: general
+  component: null
+- name: domain_analytics_whois_overview
+  description: This endpoint will provide you with Whois data enriched with backlink
+    stats, and ranking and traffic info from organic and paid search results. Using
+    this endpoint you will be able to get all these data for the domains matching
+    the parameters you specify in the request
+  parameters:
+  - name: limit
+    type: float
+    description: the maximum number of returned domains
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: 'offset in the results array of returned businesses
+
+      optional field
+
+      default value: 0
+
+      if you specify the 10 value, the first ten entities in the results array will
+      be omitted and the data will be provided for the successive entities'
+    required: false
+    default: ''
+  - name: filters
+    type: list
+    description: 'array of results filtering parameters
+
+      optional field
+
+      you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      regex, not_regex, <, <=, >, >=, =, <>, in, not_in, like, not_like, match, not_match
+
+      you can use the % operator with like and not_like to match any string of zero
+      or more characters
+
+      example:
+
+      ["rating.value",">",3]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting parameter\nexample:\n[\"rating.value,desc\"]note that you can set\
+      \ no more than three sorting rules in a single request\nyou should use a comma\
+      \ to separate several sorting rules\nexample:\n[\"rating.value,desc\",\"rating.votes_count,desc\"\
+      ]"
+    required: false
+    default: ''
+  - name: is_claimed
+    type: bool
+    description: indicates whether the business is verified by its owner on Google
+      Maps
+    required: false
+    default: 'True'
+  returns: ''
+  category: general
+  component: null
+- name: domain_analytics_whois_available_filters
+  description: 'Here you will find all the necessary information about filters that
+    can be used with DataForSEO WHOIS API endpoints.
+
+
+    Please, keep in mind that filters are associated with a certain object in the
+    result array, and should be specified accordingly.'
+  parameters:
+  - name: tool
+    type: str
+    description: The name of the tool to get filters for
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: domain_analytics_technologies_domain_technologies
+  description: Using this endpoint you will get a list of technologies used in a particular
+    domain
+  parameters:
+  - name: target
+    type: str
+    description: 'target domain
+
+      required field
+
+      domain name of the website to analyze
+
+      Note: results will be returned for the specified domain only'
+    required: true
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: domain_analytics_technologies_available_filters
+  description: 'Here you will find all the necessary information about filters that
+    can be used with DataForSEO Technologies API endpoints.
+
+
+    Please, keep in mind that filters are associated with a certain object in the
+    result array, and should be specified accordingly.'
+  parameters:
+  - name: tool
+    type: str
+    description: The name of the tool to get filters for
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: content_analysis_search
+  description: This endpoint will provide you with detailed citation data available
+    for the target keyword
+  parameters:
+  - name: keyword
+    type: str
+    description: "target keyword\n        Note: to match an exact phrase instead of\
+      \ a stand-alone keyword, use double quotes and backslashes;"
+    required: true
+    default: ''
+  - name: keyword_fields
+    type: dict
+    description: "target keyword fields and target keywords\n        use this parameter\
+      \ to filter the dataset by keywords that certain fields should contain;\n  \
+      \      you can indicate several fields;\n        Note: to match an exact phrase\
+      \ instead of a stand-alone keyword, use double quotes and backslashes;\n   \
+      \     example:\n        {\n          \"snippet\": \"\\\"logitech mouse\\\"\"\
+      ,\n          \"main_title\": \"sale\"\n        }"
+    required: false
+    default: ''
+  - name: page_type
+    type: list
+    description: target page types
+    required: false
+    default: ''
+  - name: search_mode
+    type: str
+    description: results grouping type
+    required: false
+    default: ''
+  - name: limit
+    type: float
+    description: maximum number of results to return
+    required: false
+    default: '10'
+  - name: offset
+    type: float
+    description: offset in the results array of returned keywords
+    required: false
+    default: '0'
+  - name: filters
+    type: list
+    description: 'array of results filtering parameters
+
+      optional field
+
+      you can add several filters at once (8 filters maximum)
+
+      you should set a logical operator and, or between the conditions
+
+      the following operators are supported:
+
+      regex, not_regex, <, <=, >, >=, =, <>, in, not_in, like,not_like, match, not_match
+
+      you can use the % operator with like and not_like to match any string of zero
+      or more characters
+
+      example:
+
+      ["country","=", "US"]
+
+      [["domain_rank",">",800],"and",["content_info.connotation_types.negative",">",0.9]]
+
+
+      [["domain_rank",">",800],
+
+      "and",
+
+      [["page_types","has","ecommerce"],
+
+      "or",
+
+      ["content_info.text_category","has",10994]]'
+    required: false
+    default: ''
+  - name: order_by
+    type: list
+    description: "results sorting rules\noptional field\nyou can use the same values\
+      \ as in the filters array to sort the results\npossible sorting types:\nasc\
+      \ \u2013 results will be sorted in the ascending order\ndesc \u2013 results\
+      \ will be sorted in the descending order\nyou should use a comma to set up a\
+      \ sorting type\nexample:\n[\"content_info.sentiment_connotations.anger,desc\"\
+      ]\ndefault rule:\n[\"content_info.sentiment_connotations.anger,desc\"]\nnote\
+      \ that you can set no more than three sorting rules in a single request\nyou\
+      \ should use a comma to separate several sorting rules\nexample:\n[\"content_info.sentiment_connotations.anger,desc\"\
+      ,\"keyword_data.keyword_info.cpc,desc\"]"
+    required: false
+    default: ''
+  returns: ''
+  category: general
+  component: null
+- name: content_analysis_summary
+  description: This endpoint will provide you with an overview of citation data available
+    for the target keyword
+  parameters:
+  - name: keyword
+    type: str
+    description: "target keyword\n        Note: to match an exact phrase instead of\
+      \ a stand-alone keyword, use double quotes and backslashes;"
+    required: true
+    default: ''
+  - name: keyword_fields
+    type: dict
+    description: "target keyword fields and target keywords\n        use this parameter\
+      \ to filter the dataset by keywords that certain fields should contain;\n  \
+      \      you can indicate several fields;\n        Note: to match an exact phrase\
+      \ instead of a stand-alone keyword, use double quotes and backslashes;\n   \
+      \     example:\n        {\n          \"snippet\": \"\\\"logitech mouse\\\"\"\
+      ,\n          \"main_title\": \"sale\"\n        }"
+    required: false
+    default: ''
+  - name: page_type
+    type: list
+    description: target page types
+    required: false
+    default: ''
+  - name: initial_dataset_filters
+    type: list
+    description: "initial dataset filtering parameters\n        initial filtering\
+      \ parameters that apply to fields in the Search endpoint;\n        you can add\
+      \ several filters at once (8 filters maximum);\n        you should set a logical\
+      \ operator and, or between the conditions;\n        the following operators\
+      \ are supported:\n        regex, not_regex, <, <=, >, >=, =, <>, in, not_in,\
+      \ like,not_like, has, has_not, match, not_match\n        you can use the % operator\
+      \ with like and not_like to match any string of zero or more characters;\n \
+      \       example:\n        [\"domain\",\"<>\", \"logitech.com\"]\n        [[\"\
+      domain\",\"<>\",\"logitech.com\"],\"and\",[\"content_info.connotation_types.negative\"\
+      ,\">\",1000]]\n\n        [[\"domain\",\"<>\",\"logitech.com\"]],\n        \"\
+      and\",\n        [[\"content_info.connotation_types.negative\",\">\",1000],\n\
+      \        \"or\",\n        [\"content_info.text_category\",\"has\",10994]]"
+    required: false
+    default: ''
+  - name: positive_connotation_threshold
+    type: float
+    description: "positive connotation threshold\n          specified as the probability\
+      \ index threshold for positive sentiment related to the citation content\n \
+      \         if you specify this field, connotation_types object in the response\
+      \ will only contain data on citations with positive sentiment probability more\
+      \ than or equal to the specified value"
+    required: false
+    default: '0.4'
+  - name: sentiments_connotation_threshold
+    type: float
+    description: 'sentiment connotation threshold
+
+      specified as the probability index threshold for sentiment connotations related
+      to the citation content
+
+      if you specify this field, sentiment_connotations object in the response will
+      only contain data on citations where the
+
+      probability per each sentiment is more than or equal to the specified value'
+    required: false
+    default: '0.4'
+  - name: internal_list_limit
+    type: float
+    description: "maximum number of elements within internal arrays\n          you\
+      \ can use this field to limit the number of elements within the following arrays"
+    required: false
+    default: '1'
+  returns: ''
+  category: general
+  component: null
+- name: content_analysis_phrase_trends
+  description: This endpoint will provide you with data on all citations of the target
+    keyword for the indicated date range
+  parameters:
+  - name: keyword
+    type: str
+    description: "target keyword\n        Note: to match an exact phrase instead of\
+      \ a stand-alone keyword, use double quotes and backslashes;"
+    required: true
+    default: ''
+  - name: keyword_fields
+    type: dict
+    description: "target keyword fields and target keywords\n        use this parameter\
+      \ to filter the dataset by keywords that certain fields should contain;\n  \
+      \      you can indicate several fields;\n        Note: to match an exact phrase\
+      \ instead of a stand-alone keyword, use double quotes and backslashes;\n   \
+      \     example:\n        {\n          \"snippet\": \"\\\"logitech mouse\\\"\"\
+      ,\n          \"main_title\": \"sale\"\n        }"
+    required: false
+    default: ''
+  - name: page_type
+    type: list
+    description: target page types
+    required: false
+    default: ''
+  - name: initial_dataset_filters
+    type: list
+    description: "initial dataset filtering parameters\n        initial filtering\
+      \ parameters that apply to fields in the Search endpoint;\n        you can add\
+      \ several filters at once (8 filters maximum);\n        you should set a logical\
+      \ operator and, or between the conditions;\n        the following operators\
+      \ are supported:\n        regex, not_regex, <, <=, >, >=, =, <>, in, not_in,\
+      \ like,not_like, has, has_not, match, not_match\n        you can use the % operator\
+      \ with like and not_like to match any string of zero or more characters;\n \
+      \       example:\n        [\"domain\",\"<>\", \"logitech.com\"]\n        [[\"\
+      domain\",\"<>\",\"logitech.com\"],\"and\",[\"content_info.connotation_types.negative\"\
+      ,\">\",1000]]\n\n        [[\"domain\",\"<>\",\"logitech.com\"]],\n        \"\
+      and\",\n        [[\"content_info.connotation_types.negative\",\">\",1000],\n\
+      \        \"or\",\n        [\"content_info.text_category\",\"has\",10994]]"
+    required: false
+    default: ''
+  - name: date_from
+    type: str
+    description: "starting date of the time range\n        date format: \"yyyy-mm-dd\""
+    required: true
+    default: ''
+  - name: date_to
+    type: str
+    description: "ending date of the time range\n        date format: \"yyyy-mm-dd\""
+    required: false
+    default: ''
+  - name: date_group
+    type: str
+    description: date grouping type
+    required: false
+    default: month
+  - name: internal_list_limit
+    type: float
+    description: "maximum number of elements within internal arrays\n          you\
+      \ can use this field to limit the number of elements within the following arrays"
+    required: false
+    default: '1'
+  returns: ''
+  category: general
+  component: null

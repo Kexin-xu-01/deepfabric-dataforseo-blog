@@ -1,0 +1,2716 @@
+{
+  "description": "Comprehensive DataForSEO mock data for testing tool execution with SEO analysis, keyword research, backlinks, and AI optimization scenarios",
+  "version": "1.0.0",
+  "mockResponses": {
+    "ai_optimization_keyword_data_locations_and_languages": {
+      "defaultResponse": {
+        "locations": [
+          {"location_code": 2840, "location_name": "United States", "country_iso_code": "US"},
+          {"location_code": 2826, "location_name": "United Kingdom", "country_iso_code": "GB"},
+          {"location_code": 2124, "location_name": "Canada", "country_iso_code": "CA"},
+          {"location_code": 2036, "location_name": "Australia", "country_iso_code": "AU"}
+        ],
+        "languages": [
+          {"language_code": "en", "language_name": "English"},
+          {"language_code": "es", "language_name": "Spanish"},
+          {"language_code": "fr", "language_name": "French"},
+          {"language_code": "de", "language_name": "German"}
+        ]
+      }
+    },
+    "ai_optimization_keyword_data_search_volume": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "results": [
+          {
+            "keyword": "{{keywords[0]}}",
+            "location_code": 2840,
+            "language_code": "en",
+            "ai_search_volume": 15420,
+            "ai_search_volume_trend": 12.5,
+            "monthly_searches": [
+              {"year": 2024, "month": 12, "search_volume": 15420},
+              {"year": 2024, "month": 11, "search_volume": 14200},
+              {"year": 2024, "month": 10, "search_volume": 13800}
+            ]
+          }
+        ]
+      }
+    },
+    "ai_optimization_llm_models": {
+      "defaultResponse": {
+        "llm_type": "{{llm_type}}",
+        "models": [
+          {
+            "model_name": "claude-3-opus",
+            "version": "20240229",
+            "description": "Most capable Claude model for complex tasks"
+          },
+          {
+            "model_name": "claude-3-sonnet",
+            "version": "20240229",
+            "description": "Balanced performance and speed"
+          },
+          {
+            "model_name": "claude-3-haiku",
+            "version": "20240307",
+            "description": "Fastest Claude model for simple tasks"
+          }
+        ]
+      }
+    },
+    "ai_optimization_llm_response": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "llm_type": "{{llm_type}}",
+        "model_name": "{{model_name}}",
+        "user_prompt": "{{user_prompt}}",
+        "response": {
+          "text": "This is a sample response to your query about {{user_prompt}}",
+          "sources": [
+            {"url": "https://example.com/source1", "title": "Relevant Source 1"},
+            {"url": "https://example.com/source2", "title": "Relevant Source 2"}
+          ],
+          "tokens_used": 245,
+          "completion_time_ms": 1250
+        }
+      }
+    },
+    "ai_optimization_llm_mentions_filters": {
+      "defaultResponse": {
+        "available_filters": [
+          {"field": "ai_search_volume", "type": "integer", "operators": ["=", "<>", "<", "<=", ">", ">="]},
+          {"field": "domain", "type": "string", "operators": ["=", "<>", "like", "not_like", "ilike", "not_ilike", "regex", "not_regex"]},
+          {"field": "url", "type": "string", "operators": ["=", "<>", "like", "not_like", "ilike", "not_ilike", "regex", "not_regex"]},
+          {"field": "mentions_count", "type": "integer", "operators": ["=", "<>", "<", "<=", ">", ">="]},
+          {"field": "sentiment_score", "type": "float", "operators": ["=", "<>", "<", "<=", ">", ">="]},
+          {"field": "platform", "type": "string", "operators": ["=", "<>", "in", "not_in"]}
+        ]
+      }
+    },
+    "ai_optimization_llm_mentions_locations_and_languages": {
+      "defaultResponse": {
+        "locations": [
+          {"location_code": 2840, "location_name": "United States"},
+          {"location_code": 2826, "location_name": "United Kingdom"},
+          {"location_code": 2124, "location_name": "Canada"}
+        ],
+        "languages": [
+          {"language_code": "en", "language_name": "English"},
+          {"language_code": "es", "language_name": "Spanish"}
+        ]
+      }
+    },
+    "ai_optimization_llm_mentions_search": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "total_count": 245,
+        "items": [
+          {
+            "target_type": "keyword",
+            "target_value": "{{target[0].keyword}}",
+            "url": "https://example.com/article-about-topic",
+            "domain": "example.com",
+            "title": "Comprehensive Guide to {{target[0].keyword}}",
+            "mentions_count": 45,
+            "ai_search_volume": 12400,
+            "sentiment_score": 0.85,
+            "platform": "claude",
+            "last_updated": "2024-12-15"
+          },
+          {
+            "target_type": "keyword",
+            "target_value": "{{target[0].keyword}}",
+            "url": "https://techblog.com/analysis",
+            "domain": "techblog.com",
+            "title": "Analysis: Understanding {{target[0].keyword}}",
+            "mentions_count": 32,
+            "ai_search_volume": 9800,
+            "sentiment_score": 0.72,
+            "platform": "chat_gpt",
+            "last_updated": "2024-12-10"
+          }
+        ]
+      }
+    },
+    "ai_optimization_llm_mentions_aggregated_metrics": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "items": [
+          {
+            "target_type": "keyword",
+            "target_value": "{{target[0].keyword}}",
+            "total_mentions": 1245,
+            "total_ai_search_volume": 45600,
+            "avg_sentiment_score": 0.78,
+            "unique_domains": 89,
+            "unique_urls": 234,
+            "platform_distribution": {
+              "claude": 456,
+              "chat_gpt": 389,
+              "gemini": 245,
+              "perplexity": 155
+            }
+          }
+        ]
+      }
+    },
+    "ai_optimization_llm_mentions_cross_aggregated_metrics": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "items": [
+          {
+            "aggregation_key": "brand_comparison",
+            "targets_data": [
+              {
+                "target_value": "{{targets[0].keyword}}",
+                "mentions_count": 1245,
+                "ai_search_volume": 45600
+              },
+              {
+                "target_value": "{{targets[1].keyword}}",
+                "mentions_count": 987,
+                "ai_search_volume": 32100
+              }
+            ],
+            "comparative_metrics": {
+              "mention_share_percentage": [55.8, 44.2],
+              "search_volume_share_percentage": [58.7, 41.3]
+            }
+          }
+        ]
+      }
+    },
+    "ai_optimization_llm_mentions_top_domains": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "total_count": 89,
+        "items": [
+          {
+            "domain": "example.com",
+            "mentions_count": 245,
+            "ai_search_volume": 18900,
+            "avg_sentiment_score": 0.82,
+            "unique_urls": 45
+          },
+          {
+            "domain": "techblog.com",
+            "mentions_count": 189,
+            "ai_search_volume": 14500,
+            "avg_sentiment_score": 0.75,
+            "unique_urls": 32
+          },
+          {
+            "domain": "industry-news.org",
+            "mentions_count": 156,
+            "ai_search_volume": 12300,
+            "avg_sentiment_score": 0.68,
+            "unique_urls": 28
+          }
+        ]
+      }
+    },
+    "ai_optimization_llm_mentions_top_pages": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "total_count": 234,
+        "items": [
+          {
+            "url": "https://example.com/ultimate-guide",
+            "domain": "example.com",
+            "title": "The Ultimate Guide to {{target[0].keyword}}",
+            "mentions_count": 78,
+            "ai_search_volume": 8900,
+            "sentiment_score": 0.89,
+            "platforms": ["claude", "chat_gpt", "gemini"]
+          },
+          {
+            "url": "https://techblog.com/comprehensive-analysis",
+            "domain": "techblog.com",
+            "title": "Comprehensive Analysis of {{target[0].keyword}}",
+            "mentions_count": 64,
+            "ai_search_volume": 7200,
+            "sentiment_score": 0.76,
+            "platforms": ["chat_gpt", "perplexity"]
+          }
+        ]
+      }
+    },
+    "serp_locations": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "locations": [
+          {"location_code": 2840, "location_name": "United States", "location_type": "Country", "country_iso_code": "US"},
+          {"location_code": 1023191, "location_name": "New York,New York,United States", "location_type": "City", "country_iso_code": "US"},
+          {"location_code": 1023768, "location_name": "Los Angeles,California,United States", "location_type": "City", "country_iso_code": "US"},
+          {"location_code": 2826, "location_name": "United Kingdom", "location_type": "Country", "country_iso_code": "GB"}
+        ]
+      }
+    },
+    "serp_organic_live_advanced": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keyword": "{{keyword}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "device": "desktop",
+        "se_results_count": "About 1,240,000,000 results",
+        "items_count": 10,
+        "items": [
+          {
+            "type": "organic",
+            "rank_group": 1,
+            "rank_absolute": 1,
+            "position": "left",
+            "url": "https://example.com/best-practices",
+            "domain": "example.com",
+            "title": "Complete Guide to {{keyword}} - Best Practices 2024",
+            "description": "Discover comprehensive strategies for {{keyword}}. Our expert guide covers everything you need to know with actionable insights and proven methods.",
+            "breadcrumb": "https://example.com › guides › best-practices",
+            "timestamp": "2024-12-15T10:30:00Z"
+          },
+          {
+            "type": "organic",
+            "rank_group": 2,
+            "rank_absolute": 2,
+            "position": "left",
+            "url": "https://wikipedia.org/wiki/Topic",
+            "domain": "wikipedia.org",
+            "title": "{{keyword}} - Wikipedia",
+            "description": "{{keyword}} refers to the process of... This article covers the history, methods, and applications.",
+            "breadcrumb": "https://wikipedia.org › wiki › Topic",
+            "timestamp": "2024-12-14T18:20:00Z"
+          },
+          {
+            "type": "people_also_ask",
+            "rank_group": 3,
+            "rank_absolute": 3,
+            "items": [
+              {
+                "type": "people_also_ask_element",
+                "title": "What is {{keyword}}?",
+                "url": "https://example.com/faq",
+                "domain": "example.com",
+                "description": "{{keyword}} is a method that..."
+              },
+              {
+                "type": "people_also_ask_element",
+                "title": "How does {{keyword}} work?",
+                "url": "https://techblog.com/how-it-works",
+                "domain": "techblog.com",
+                "description": "The process involves several key steps..."
+              }
+            ]
+          },
+          {
+            "type": "organic",
+            "rank_group": 4,
+            "rank_absolute": 4,
+            "position": "left",
+            "url": "https://techblog.com/{{keyword}}-tutorial",
+            "domain": "techblog.com",
+            "title": "Master {{keyword}}: Step-by-Step Tutorial",
+            "description": "Learn {{keyword}} from scratch with our comprehensive tutorial. Includes examples, code snippets, and best practices.",
+            "breadcrumb": "https://techblog.com › tutorials",
+            "timestamp": "2024-12-10T09:15:00Z"
+          }
+        ]
+      }
+    },
+    "serp_youtube_locations": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "locations": [
+          {"location_code": 2840, "location_name": "United States", "country_iso_code": "US"},
+          {"location_code": 2826, "location_name": "United Kingdom", "country_iso_code": "GB"},
+          {"location_code": 2124, "location_name": "Canada", "country_iso_code": "CA"}
+        ]
+      }
+    },
+    "serp_youtube_organic_live_advanced": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keyword": "{{keyword}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "device": "desktop",
+        "items_count": 20,
+        "items": [
+          {
+            "type": "video",
+            "rank_group": 1,
+            "rank_absolute": 1,
+            "video_id": "dQw4w9WgXcQ",
+            "title": "{{keyword}} - Complete Tutorial for Beginners",
+            "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            "channel_name": "Tech Tutorials Pro",
+            "channel_url": "https://www.youtube.com/channel/UCexample",
+            "duration": "PT15M42S",
+            "views": 1245789,
+            "likes": 42300,
+            "published_date": "2024-11-20",
+            "thumbnail": "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+            "description": "In this comprehensive tutorial, we cover everything about {{keyword}}..."
+          },
+          {
+            "type": "video",
+            "rank_group": 2,
+            "rank_absolute": 2,
+            "video_id": "xvFZjo5PgG0",
+            "title": "Advanced {{keyword}} Techniques",
+            "url": "https://www.youtube.com/watch?v=xvFZjo5PgG0",
+            "channel_name": "Advanced Tech",
+            "channel_url": "https://www.youtube.com/channel/UCadvanced",
+            "duration": "PT23M15S",
+            "views": 987654,
+            "likes": 35200,
+            "published_date": "2024-11-15",
+            "thumbnail": "https://i.ytimg.com/vi/xvFZjo5PgG0/maxresdefault.jpg",
+            "description": "Take your {{keyword}} skills to the next level..."
+          }
+        ]
+      }
+    },
+    "serp_youtube_video_info_live_advanced": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "video_id": "{{video_id}}",
+        "title": "Complete Guide to {{keyword}}",
+        "channel_name": "Tech Tutorials Pro",
+        "channel_id": "UCexample",
+        "channel_url": "https://www.youtube.com/channel/UCexample",
+        "duration": "PT15M42S",
+        "views": 1245789,
+        "likes": 42300,
+        "comments_count": 3456,
+        "published_date": "2024-11-20T14:30:00Z",
+        "description": "In this comprehensive tutorial, we cover everything about the topic...",
+        "tags": ["tutorial", "guide", "beginner", "advanced"],
+        "category": "Education"
+      }
+    },
+    "serp_youtube_video_comments_live_advanced": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "video_id": "{{video_id}}",
+        "total_count": 3456,
+        "items": [
+          {
+            "type": "comment",
+            "author_name": "John Doe",
+            "author_url": "https://www.youtube.com/channel/UCjohndoe",
+            "text": "This is the best tutorial on this topic I've found. Thanks for making it so clear!",
+            "likes": 245,
+            "published_date": "2024-12-01T10:20:00Z",
+            "reply_count": 12
+          },
+          {
+            "type": "comment",
+            "author_name": "Jane Smith",
+            "author_url": "https://www.youtube.com/channel/UCjanesmith",
+            "text": "Great explanation! Could you do a follow-up video on advanced techniques?",
+            "likes": 189,
+            "published_date": "2024-11-28T16:45:00Z",
+            "reply_count": 8
+          }
+        ]
+      }
+    },
+    "serp_youtube_video_subtitles_live_advanced": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "video_id": "{{video_id}}",
+        "language_code": "en",
+        "subtitles": [
+          {
+            "start_time": 0,
+            "duration": 3.5,
+            "text": "Welcome to this tutorial on {{keyword}}"
+          },
+          {
+            "start_time": 3.5,
+            "duration": 4.2,
+            "text": "Today we're going to cover the fundamentals"
+          },
+          {
+            "start_time": 7.7,
+            "duration": 3.8,
+            "text": "And show you some practical examples"
+          }
+        ]
+      }
+    },
+    "keywords_data_google_ads_search_volume": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "location_code": 2840,
+        "language_code": "en",
+        "items": [
+          {
+            "keyword": "{{keywords[0]}}",
+            "search_volume": 45600,
+            "competition": 0.72,
+            "competition_level": "HIGH",
+            "cpc": 2.45,
+            "low_top_of_page_bid": 1.85,
+            "high_top_of_page_bid": 4.20,
+            "monthly_searches": [
+              {"year": 2024, "month": 12, "search_volume": 45600},
+              {"year": 2024, "month": 11, "search_volume": 42300},
+              {"year": 2024, "month": 10, "search_volume": 41800}
+            ]
+          }
+        ]
+      }
+    },
+    "keywords_data_dataforseo_trends_demography": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keyword": "{{keywords[0]}}",
+        "location_code": 2840,
+        "type": "web",
+        "items": [
+          {
+            "age_range": "18-24",
+            "gender": "male",
+            "percentage": 15.2
+          },
+          {
+            "age_range": "18-24",
+            "gender": "female",
+            "percentage": 12.8
+          },
+          {
+            "age_range": "25-34",
+            "gender": "male",
+            "percentage": 22.5
+          },
+          {
+            "age_range": "25-34",
+            "gender": "female",
+            "percentage": 19.3
+          },
+          {
+            "age_range": "35-44",
+            "gender": "male",
+            "percentage": 14.7
+          },
+          {
+            "age_range": "35-44",
+            "gender": "female",
+            "percentage": 15.5
+          }
+        ]
+      }
+    },
+    "keywords_data_dataforseo_trends_subregion_interests": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keyword": "{{keywords[0]}}",
+        "location_code": 2840,
+        "type": "web",
+        "items": [
+          {
+            "region": "California",
+            "region_code": "US-CA",
+            "interest": 100
+          },
+          {
+            "region": "Texas",
+            "region_code": "US-TX",
+            "interest": 85
+          },
+          {
+            "region": "New York",
+            "region_code": "US-NY",
+            "interest": 92
+          },
+          {
+            "region": "Florida",
+            "region_code": "US-FL",
+            "interest": 78
+          }
+        ]
+      }
+    },
+    "keywords_data_dataforseo_trends_explore": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keywords": "{{keywords}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "type": "web",
+        "items": [
+          {
+            "keyword": "{{keywords[0]}}",
+            "data": [
+              {"date": "2024-12-01", "value": 85, "timestamp": 1701388800},
+              {"date": "2024-12-08", "value": 92, "timestamp": 1701993600},
+              {"date": "2024-12-15", "value": 100, "timestamp": 1702598400}
+            ],
+            "average_value": 92
+          }
+        ],
+        "related_queries": [
+          {"query": "best {{keywords[0]}} tools", "value": 100},
+          {"query": "{{keywords[0]}} tutorial", "value": 85},
+          {"query": "{{keywords[0]}} examples", "value": 72}
+        ]
+      }
+    },
+    "keywords_data_google_trends_categories": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "categories": [
+          {"code": 0, "name": "All categories"},
+          {"code": 3, "name": "Arts & Entertainment"},
+          {"code": 5, "name": "Autos & Vehicles"},
+          {"code": 7, "name": "Beauty & Fitness"},
+          {"code": 8, "name": "Books & Literature"},
+          {"code": 12, "name": "Business & Industrial"},
+          {"code": 13, "name": "Computers & Electronics"},
+          {"code": 16, "name": "Finance"},
+          {"code": 45, "name": "News"},
+          {"code": 66, "name": "Science"}
+        ]
+      }
+    },
+    "keywords_data_google_trends_explore": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keywords": "{{keywords}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "type": "web",
+        "items": [
+          {
+            "keyword": "{{keywords[0]}}",
+            "data": [
+              {"date": "2024-10-01", "value": 65},
+              {"date": "2024-11-01", "value": 78},
+              {"date": "2024-12-01", "value": 92}
+            ],
+            "average_value": 78
+          }
+        ],
+        "related_topics": [
+          {"topic": "Machine Learning", "value": 100, "type": "rising"},
+          {"topic": "Artificial Intelligence", "value": 85, "type": "top"},
+          {"topic": "Neural Networks", "value": 72, "type": "rising"}
+        ],
+        "related_queries": [
+          {"query": "{{keywords[0]}} tutorial", "value": 100},
+          {"query": "best {{keywords[0]}} practices", "value": 85}
+        ]
+      }
+    },
+    "on_page_content_parsing": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "url": "{{url}}",
+        "items": [
+          {
+            "page_content": {
+              "title": "Example Page Title",
+              "description": "This is the meta description of the page",
+              "h1": ["Main Heading"],
+              "h2": ["Section 1", "Section 2", "Section 3"],
+              "images": [
+                {"src": "https://example.com/image1.jpg", "alt": "Image description"},
+                {"src": "https://example.com/image2.jpg", "alt": "Another image"}
+              ],
+              "links": [
+                {"url": "https://example.com/page1", "text": "Link 1", "rel": "nofollow"},
+                {"url": "https://example.com/page2", "text": "Link 2", "rel": null}
+              ],
+              "text_content": "This is the extracted text content from the page...",
+              "word_count": 1245
+            },
+            "meta": {
+              "canonical": "https://example.com/canonical-url",
+              "robots": "index, follow",
+              "og_title": "Open Graph Title",
+              "og_description": "Open Graph Description",
+              "og_image": "https://example.com/og-image.jpg"
+            },
+            "performance": {
+              "response_time_ms": 342,
+              "page_size_bytes": 125840
+            }
+          }
+        ]
+      }
+    },
+    "on_page_instant_pages": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "url": "{{url}}",
+        "items": [
+          {
+            "onpage_score": 87,
+            "checks": {
+              "title": {"score": 100, "message": "Title tag is present and optimized"},
+              "meta_description": {"score": 95, "message": "Meta description is present and well-formatted"},
+              "h1": {"score": 100, "message": "Single H1 tag found"},
+              "images_alt": {"score": 75, "message": "Most images have alt attributes"},
+              "page_load_time": {"score": 85, "message": "Page loads in 1.2 seconds"},
+              "mobile_friendly": {"score": 100, "message": "Page is mobile responsive"}
+            },
+            "recommendations": [
+              "Add alt attributes to 3 images",
+              "Reduce page load time by optimizing images",
+              "Consider adding more internal links"
+            ]
+          }
+        ]
+      }
+    },
+    "on_page_lighthouse": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "url": "{{url}}",
+        "items": [
+          {
+            "performance_score": 0.92,
+            "accessibility_score": 0.88,
+            "best_practices_score": 0.95,
+            "seo_score": 0.90,
+            "metrics": {
+              "first_contentful_paint": 1.2,
+              "largest_contentful_paint": 2.3,
+              "cumulative_layout_shift": 0.05,
+              "time_to_interactive": 3.1,
+              "total_blocking_time": 150,
+              "speed_index": 2.8
+            },
+            "audits": [
+              {
+                "id": "document-title",
+                "score": 1,
+                "title": "Document has a title",
+                "description": "The page has a title element"
+              },
+              {
+                "id": "meta-description",
+                "score": 1,
+                "title": "Document has a meta description",
+                "description": "Meta description is present"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_ranked_keywords": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "total_count": 1245,
+        "items": [
+          {
+            "keyword": "best seo tools",
+            "keyword_data": {
+              "keyword": "best seo tools",
+              "search_volume": 18100,
+              "competition": 0.82,
+              "cpc": 15.40
+            },
+            "ranked_serp_element": {
+              "serp_item": {
+                "rank_group": 3,
+                "rank_absolute": 3,
+                "position": "left",
+                "url": "https://{{target}}/seo-tools-guide",
+                "domain": "{{target}}"
+              }
+            },
+            "check_url": "https://www.google.com/search?q=best+seo+tools"
+          },
+          {
+            "keyword": "keyword research tools",
+            "keyword_data": {
+              "keyword": "keyword research tools",
+              "search_volume": 12300,
+              "competition": 0.75,
+              "cpc": 12.80
+            },
+            "ranked_serp_element": {
+              "serp_item": {
+                "rank_group": 5,
+                "rank_absolute": 5,
+                "position": "left",
+                "url": "https://{{target}}/keyword-tools",
+                "domain": "{{target}}"
+              }
+            },
+            "check_url": "https://www.google.com/search?q=keyword+research+tools"
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_competitors_domain": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "total_count": 50,
+        "items": [
+          {
+            "domain": "competitor1.com",
+            "avg_position": 12.5,
+            "sum_position": 3750,
+            "intersections": 300,
+            "full_domain_metrics": {
+              "organic_etv": 125000,
+              "organic_count": 4567,
+              "organic_is_new": 245,
+              "organic_is_up": 389,
+              "organic_is_down": 156,
+              "organic_is_lost": 89
+            }
+          },
+          {
+            "domain": "competitor2.com",
+            "avg_position": 14.2,
+            "sum_position": 2840,
+            "intersections": 200,
+            "full_domain_metrics": {
+              "organic_etv": 98000,
+              "organic_count": 3456,
+              "organic_is_new": 189,
+              "organic_is_up": 267,
+              "organic_is_down": 134,
+              "organic_is_lost": 67
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_domain_rank_overview": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "items": [
+          {
+            "metrics": {
+              "organic": {
+                "pos_1": 45,
+                "pos_2_3": 89,
+                "pos_4_10": 234,
+                "pos_11_20": 456,
+                "pos_21_30": 389,
+                "pos_31_40": 267,
+                "pos_41_50": 189,
+                "pos_51_60": 134,
+                "pos_61_70": 98,
+                "pos_71_80": 67,
+                "pos_81_90": 45,
+                "pos_91_100": 32,
+                "etv": 456700.50,
+                "count": 2045
+              }
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_keyword_ideas": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "seed_keywords": "{{keywords}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "total_count": 1500,
+        "items": [
+          {
+            "keyword": "{{keywords[0]}} tools",
+            "location_code": 2840,
+            "language_code": "en",
+            "search_partners": false,
+            "keyword_info": {
+              "search_volume": 18100,
+              "competition": 0.78,
+              "cpc": 12.50,
+              "monthly_searches": [
+                {"year": 2024, "month": 12, "search_volume": 18100},
+                {"year": 2024, "month": 11, "search_volume": 16500}
+              ]
+            }
+          },
+          {
+            "keyword": "best {{keywords[0]}}",
+            "location_code": 2840,
+            "language_code": "en",
+            "search_partners": false,
+            "keyword_info": {
+              "search_volume": 14500,
+              "competition": 0.82,
+              "cpc": 15.20,
+              "monthly_searches": [
+                {"year": 2024, "month": 12, "search_volume": 14500},
+                {"year": 2024, "month": 11, "search_volume": 13200}
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_related_keywords": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keyword": "{{keyword}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "total_count": 250,
+        "items": [
+          {
+            "keyword": "{{keyword}} tutorial",
+            "depth": 1,
+            "keyword_info": {
+              "search_volume": 8900,
+              "competition": 0.65,
+              "cpc": 8.75
+            }
+          },
+          {
+            "keyword": "{{keyword}} guide",
+            "depth": 1,
+            "keyword_info": {
+              "search_volume": 7200,
+              "competition": 0.68,
+              "cpc": 9.20
+            }
+          },
+          {
+            "keyword": "{{keyword}} examples",
+            "depth": 1,
+            "keyword_info": {
+              "search_volume": 5400,
+              "competition": 0.55,
+              "cpc": 6.80
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_keyword_suggestions": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keyword": "{{keyword}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "total_count": 500,
+        "items": [
+          {
+            "keyword": "{{keyword}} for beginners",
+            "keyword_info": {
+              "search_volume": 6700,
+              "competition": 0.62,
+              "cpc": 7.50
+            }
+          },
+          {
+            "keyword": "{{keyword}} best practices",
+            "keyword_info": {
+              "search_volume": 5900,
+              "competition": 0.70,
+              "cpc": 9.80
+            }
+          },
+          {
+            "keyword": "how to use {{keyword}}",
+            "keyword_info": {
+              "search_volume": 4800,
+              "competition": 0.58,
+              "cpc": 6.40
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_keyword_overview": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "items": [
+          {
+            "keyword": "{{keywords[0]}}",
+            "location_code": 2840,
+            "language_code": "en",
+            "keyword_info": {
+              "search_volume": 18100,
+              "competition": 0.78,
+              "cpc": 12.50,
+              "low_top_of_page_bid": 9.20,
+              "high_top_of_page_bid": 18.70,
+              "monthly_searches": [
+                {"year": 2024, "month": 12, "search_volume": 18100},
+                {"year": 2024, "month": 11, "search_volume": 16500},
+                {"year": 2024, "month": 10, "search_volume": 15800}
+              ]
+            },
+            "serp_info": {
+              "se_results_count": "About 1,240,000,000 results",
+              "last_updated_time": "2024-12-15T10:30:00Z"
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_top_searches": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "location_code": 2840,
+        "language_code": "en",
+        "total_count": 1000,
+        "items": [
+          {
+            "keyword": "chatgpt",
+            "keyword_info": {
+              "search_volume": 124500000,
+              "competition": 0.15,
+              "cpc": 2.35
+            }
+          },
+          {
+            "keyword": "google",
+            "keyword_info": {
+              "search_volume": 89400000,
+              "competition": 0.08,
+              "cpc": 1.20
+            }
+          },
+          {
+            "keyword": "youtube",
+            "keyword_info": {
+              "search_volume": 78900000,
+              "competition": 0.10,
+              "cpc": 1.50
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_historical_serp": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keyword": "{{keyword}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "date_from": "{{date_from}}",
+        "date_to": "{{date_to}}",
+        "items": [
+          {
+            "date": "2024-12-01",
+            "serp_item": {
+              "rank_absolute": 1,
+              "url": "https://example.com/page1",
+              "domain": "example.com",
+              "title": "Title from Dec 1"
+            }
+          },
+          {
+            "date": "2024-12-08",
+            "serp_item": {
+              "rank_absolute": 1,
+              "url": "https://example.com/page1",
+              "domain": "example.com",
+              "title": "Updated Title from Dec 8"
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_serp_competitors": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keywords": "{{keywords}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "total_count": 75,
+        "items": [
+          {
+            "domain": "competitor1.com",
+            "avg_position": 8.5,
+            "median_position": 7,
+            "keywords_count": 145,
+            "visibility": 0.82
+          },
+          {
+            "domain": "competitor2.com",
+            "avg_position": 12.3,
+            "median_position": 10,
+            "keywords_count": 98,
+            "visibility": 0.65
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_historical_rank_overview": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "items": [
+          {
+            "date": "2024-12-01",
+            "metrics": {
+              "organic": {
+                "etv": 425600.75,
+                "count": 1987,
+                "pos_1": 42,
+                "pos_2_3": 85,
+                "pos_4_10": 215
+              }
+            }
+          },
+          {
+            "date": "2024-11-01",
+            "metrics": {
+              "organic": {
+                "etv": 398700.50,
+                "count": 1854,
+                "pos_1": 38,
+                "pos_2_3": 78,
+                "pos_4_10": 198
+              }
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_historical_keyword_data": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keyword": "{{keyword}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "items": [
+          {
+            "date": "2024-12-01",
+            "keyword_info": {
+              "search_volume": 18100,
+              "competition": 0.78,
+              "cpc": 12.50
+            }
+          },
+          {
+            "date": "2024-11-01",
+            "keyword_info": {
+              "search_volume": 16500,
+              "competition": 0.75,
+              "cpc": 11.80
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_bulk_keyword_difficulty": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "location_code": 2840,
+        "language_code": "en",
+        "items": [
+          {
+            "keyword": "{{keywords[0]}}",
+            "keyword_difficulty": 68,
+            "search_volume": 18100
+          },
+          {
+            "keyword": "{{keywords[1]}}",
+            "keyword_difficulty": 72,
+            "search_volume": 14500
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_search_intent": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "language_code": "en",
+        "items": [
+          {
+            "keyword": "{{keywords[0]}}",
+            "intent_info": {
+              "primary_intent": "informational",
+              "secondary_intent": "commercial",
+              "intent_probability": {
+                "informational": 0.75,
+                "navigational": 0.05,
+                "commercial": 0.15,
+                "transactional": 0.05
+              }
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_subdomains": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "total_count": 15,
+        "items": [
+          {
+            "subdomain": "blog.{{target}}",
+            "metrics": {
+              "organic": {
+                "etv": 125000,
+                "count": 1234,
+                "pos_1": 25,
+                "pos_2_3": 48,
+                "pos_4_10": 156
+              }
+            }
+          },
+          {
+            "subdomain": "www.{{target}}",
+            "metrics": {
+              "organic": {
+                "etv": 298000,
+                "count": 2456,
+                "pos_1": 42,
+                "pos_2_3": 89,
+                "pos_4_10": 287
+              }
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_keywords_for_site": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "total_count": 850,
+        "items": [
+          {
+            "keyword": "seo tools",
+            "keyword_info": {
+              "search_volume": 22100,
+              "competition": 0.85,
+              "cpc": 18.50
+            },
+            "relevance": 0.92
+          },
+          {
+            "keyword": "keyword research",
+            "keyword_info": {
+              "search_volume": 18400,
+              "competition": 0.78,
+              "cpc": 15.20
+            },
+            "relevance": 0.88
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_domain_intersection": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "targets": "{{targets}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "total_count": 450,
+        "items": [
+          {
+            "keyword": "seo optimization",
+            "keyword_info": {
+              "search_volume": 27100,
+              "competition": 0.88,
+              "cpc": 22.30
+            },
+            "intersection_result": {
+              "{{targets[0]}}": {
+                "rank_absolute": 5,
+                "etv": 1245.50
+              },
+              "{{targets[1]}}": {
+                "rank_absolute": 8,
+                "etv": 892.30
+              }
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_relevant_pages": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "total_count": 125,
+        "items": [
+          {
+            "url": "https://{{target}}/seo-guide",
+            "metrics": {
+              "organic": {
+                "etv": 45600,
+                "count": 289,
+                "pos_1": 8,
+                "pos_2_3": 15,
+                "pos_4_10": 42
+              }
+            }
+          },
+          {
+            "url": "https://{{target}}/keyword-tools",
+            "metrics": {
+              "organic": {
+                "etv": 32400,
+                "count": 198,
+                "pos_1": 5,
+                "pos_2_3": 12,
+                "pos_4_10": 35
+              }
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_google_page_intersection": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "pages": "{{pages}}",
+        "location_code": 2840,
+        "language_code": "en",
+        "total_count": 85,
+        "items": [
+          {
+            "keyword": "seo best practices",
+            "keyword_info": {
+              "search_volume": 9800,
+              "competition": 0.72,
+              "cpc": 12.40
+            },
+            "intersection_result": {
+              "{{pages[0]}}": {
+                "rank_absolute": 4
+              },
+              "{{pages[1]}}": {
+                "rank_absolute": 12
+              }
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_bulk_traffic_estimation": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "location_code": 2840,
+        "language_code": "en",
+        "items": [
+          {
+            "target": "{{targets[0]}}",
+            "metrics": {
+              "organic": {
+                "etv": 456700.50,
+                "count": 2045
+              }
+            }
+          }
+        ]
+      }
+    },
+    "dataforseo_labs_available_filters": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "available_filters": [
+          {"field": "keyword_info.search_volume", "type": "integer", "operators": ["=", "<>", "<", "<=", ">", ">="]},
+          {"field": "keyword_info.competition", "type": "float", "operators": ["=", "<>", "<", "<=", ">", ">="]},
+          {"field": "keyword_info.cpc", "type": "float", "operators": ["=", "<>", "<", "<=", ">", ">="]},
+          {"field": "ranked_serp_element.serp_item.rank_absolute", "type": "integer", "operators": ["=", "<>", "<", "<=", ">", ">="]},
+          {"field": "keyword", "type": "string", "operators": ["=", "<>", "like", "not_like", "ilike", "not_ilike", "regex", "not_regex"]}
+        ]
+      }
+    },
+    "backlinks_backlinks": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "mode": "{{mode}}",
+        "total_count": 12450,
+        "items": [
+          {
+            "url_from": "https://referring-site1.com/article",
+            "url_to": "https://{{target}}/page",
+            "domain_from": "referring-site1.com",
+            "domain_to": "{{target}}",
+            "tld_from": "com",
+            "is_new": false,
+            "is_lost": false,
+            "backlink_spam_score": 2,
+            "rank": 65,
+            "page_from_rank": 58,
+            "domain_from_rank": 72,
+            "page_from_external_links": 145,
+            "domain_from_external_links": 2456,
+            "text_pre": "Check out this",
+            "anchor": "comprehensive guide",
+            "text_post": "for more information",
+            "first_seen": "2024-06-15",
+            "last_seen": "2024-12-15",
+            "dofollow": true,
+            "alt": null
+          },
+          {
+            "url_from": "https://tech-blog.net/review",
+            "url_to": "https://{{target}}/tool",
+            "domain_from": "tech-blog.net",
+            "domain_to": "{{target}}",
+            "tld_from": "net",
+            "is_new": true,
+            "is_lost": false,
+            "backlink_spam_score": 1,
+            "rank": 71,
+            "page_from_rank": 64,
+            "domain_from_rank": 78,
+            "page_from_external_links": 89,
+            "domain_from_external_links": 1987,
+            "text_pre": "We recommend",
+            "anchor": "this amazing tool",
+            "text_post": "for your needs",
+            "first_seen": "2024-12-10",
+            "last_seen": "2024-12-15",
+            "dofollow": true,
+            "alt": null
+          }
+        ]
+      }
+    },
+    "backlinks_anchors": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "total_count": 456,
+        "items": [
+          {
+            "anchor": "seo tools",
+            "rank": 68,
+            "backlinks": 245,
+            "referring_domains": 89,
+            "referring_main_domains": 78,
+            "first_seen": "2023-08-20",
+            "last_seen": "2024-12-15"
+          },
+          {
+            "anchor": "keyword research",
+            "rank": 65,
+            "backlinks": 198,
+            "referring_domains": 67,
+            "referring_main_domains": 58,
+            "first_seen": "2023-09-12",
+            "last_seen": "2024-12-14"
+          }
+        ]
+      }
+    },
+    "backlinks_referring_domains": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "total_count": 1245,
+        "items": [
+          {
+            "domain": "referring-site1.com",
+            "rank": 72,
+            "backlinks": 45,
+            "first_seen": "2023-05-10",
+            "last_seen": "2024-12-15",
+            "broken_backlinks": 2,
+            "broken_pages": 1,
+            "referring_links_tld": {
+              "com": 38,
+              "net": 5,
+              "org": 2
+            },
+            "referring_links_types": {
+              "anchor": 40,
+              "image": 3,
+              "link": 2
+            },
+            "referring_links_attributes": {
+              "dofollow": 42,
+              "nofollow": 3
+            }
+          },
+          {
+            "domain": "tech-blog.net",
+            "rank": 78,
+            "backlinks": 32,
+            "first_seen": "2023-07-22",
+            "last_seen": "2024-12-14",
+            "broken_backlinks": 0,
+            "broken_pages": 0,
+            "referring_links_tld": {
+              "net": 28,
+              "com": 4
+            },
+            "referring_links_types": {
+              "anchor": 30,
+              "image": 2
+            },
+            "referring_links_attributes": {
+              "dofollow": 32
+            }
+          }
+        ]
+      }
+    },
+    "backlinks_referring_networks": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "network_address_type": "{{network_address_type}}",
+        "total_count": 456,
+        "items": [
+          {
+            "network": "192.168.1.0/24",
+            "rank": 68,
+            "backlinks": 156,
+            "referring_domains": 45,
+            "first_seen": "2023-06-15",
+            "last_seen": "2024-12-15"
+          },
+          {
+            "network": "10.0.0.0/8",
+            "rank": 65,
+            "backlinks": 98,
+            "referring_domains": 32,
+            "first_seen": "2023-08-20",
+            "last_seen": "2024-12-12"
+          }
+        ]
+      }
+    },
+    "backlinks_bulk_backlinks": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "items": [
+          {
+            "target": "{{targets[0]}}",
+            "backlinks": 12450,
+            "main_domain_backlinks": 11234
+          },
+          {
+            "target": "{{targets[1]}}",
+            "backlinks": 8967,
+            "main_domain_backlinks": 7845
+          }
+        ]
+      }
+    },
+    "backlinks_bulk_referring_domains": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "items": [
+          {
+            "target": "{{targets[0]}}",
+            "referring_domains": 1245,
+            "referring_main_domains": 1098
+          },
+          {
+            "target": "{{targets[1]}}",
+            "referring_domains": 987,
+            "referring_main_domains": 856
+          }
+        ]
+      }
+    },
+    "backlinks_bulk_new_lost_referring_domains": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "items": [
+          {
+            "target": "{{targets[0]}}",
+            "new_referring_domains": 45,
+            "lost_referring_domains": 12,
+            "new_referring_main_domains": 38,
+            "lost_referring_main_domains": 8
+          }
+        ]
+      }
+    },
+    "backlinks_bulk_new_lost_backlinks": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "items": [
+          {
+            "target": "{{targets[0]}}",
+            "new_backlinks": 156,
+            "lost_backlinks": 34
+          }
+        ]
+      }
+    },
+    "backlinks_bulk_ranks": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "rank_scale": "{{rank_scale}}",
+        "items": [
+          {
+            "target": "{{targets[0]}}",
+            "rank": 68
+          },
+          {
+            "target": "{{targets[1]}}",
+            "rank": 72
+          }
+        ]
+      }
+    },
+    "backlinks_bulk_spam_score": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "items": [
+          {
+            "target": "{{targets[0]}}",
+            "spam_score": 8
+          },
+          {
+            "target": "{{targets[1]}}",
+            "spam_score": 12
+          }
+        ]
+      }
+    },
+    "backlinks_bulk_pages_summary": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "items": [
+          {
+            "target": "{{targets[0]}}",
+            "rank": 68,
+            "backlinks": 12450,
+            "referring_domains": 1245,
+            "referring_main_domains": 1098,
+            "external_links": 345,
+            "internal_links": 567
+          }
+        ]
+      }
+    },
+    "backlinks_competitors": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "total_count": 50,
+        "items": [
+          {
+            "target": "competitor1.com",
+            "rank": 72,
+            "intersections": 245,
+            "backlinks": 15678,
+            "referring_domains": 1567
+          },
+          {
+            "target": "competitor2.com",
+            "rank": 70,
+            "intersections": 198,
+            "backlinks": 13456,
+            "referring_domains": 1345
+          }
+        ]
+      }
+    },
+    "backlinks_domain_intersection": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "targets": "{{targets}}",
+        "total_count": 345,
+        "items": [
+          {
+            "domain": "shared-referring.com",
+            "rank": 75,
+            "backlinks_to_targets": {
+              "{{targets[0]}}": 12,
+              "{{targets[1]}}": 8
+            }
+          }
+        ]
+      }
+    },
+    "backlinks_page_intersection": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "targets": "{{targets}}",
+        "total_count": 156,
+        "items": [
+          {
+            "domain": "shared-referring.com",
+            "rank": 75,
+            "backlinks_to_targets": {
+              "{{targets[0]}}": 5,
+              "{{targets[1]}}": 3
+            }
+          }
+        ]
+      }
+    },
+    "backlinks_domain_pages": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "total_count": 234,
+        "items": [
+          {
+            "url": "https://{{target}}/page1",
+            "rank": 65,
+            "backlinks": 145,
+            "referring_domains": 67,
+            "internal_links": 23,
+            "external_links": 12,
+            "broken_backlinks": 2,
+            "broken_pages": 1
+          },
+          {
+            "url": "https://{{target}}/page2",
+            "rank": 62,
+            "backlinks": 98,
+            "referring_domains": 45,
+            "internal_links": 18,
+            "external_links": 8,
+            "broken_backlinks": 0,
+            "broken_pages": 0
+          }
+        ]
+      }
+    },
+    "backlinks_domain_pages_summary": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "items": [
+          {
+            "url": "https://{{target}}/page1",
+            "rank": 65,
+            "page_summary": {
+              "backlinks": 145,
+              "referring_domains": 67,
+              "referring_main_domains": 58,
+              "rank": 65,
+              "external_links": 12,
+              "internal_links": 23
+            }
+          }
+        ]
+      }
+    },
+    "backlinks_timeseries_summary": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "date_from": "{{date_from}}",
+        "date_to": "{{date_to}}",
+        "items": [
+          {
+            "date": "2024-12-01",
+            "rank": 68,
+            "backlinks": 12450,
+            "referring_domains": 1245
+          },
+          {
+            "date": "2024-11-01",
+            "rank": 67,
+            "backlinks": 12234,
+            "referring_domains": 1198
+          }
+        ]
+      }
+    },
+    "backlinks_timeseries_new_lost_summary": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "date_from": "{{date_from}}",
+        "date_to": "{{date_to}}",
+        "items": [
+          {
+            "date": "2024-12-01",
+            "new_backlinks": 156,
+            "lost_backlinks": 34,
+            "new_referring_domains": 45,
+            "lost_referring_domains": 12
+          },
+          {
+            "date": "2024-11-01",
+            "new_backlinks": 142,
+            "lost_backlinks": 28,
+            "new_referring_domains": 38,
+            "lost_referring_domains": 9
+          }
+        ]
+      }
+    },
+    "backlinks_available_filters": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "available_filters": [
+          {"field": "rank", "type": "integer", "operators": ["=", "<>", "<", "<=", ">", ">="]},
+          {"field": "backlinks", "type": "integer", "operators": ["=", "<>", "<", "<=", ">", ">="]},
+          {"field": "domain_from", "type": "string", "operators": ["=", "<>", "like", "not_like", "ilike", "not_ilike", "regex", "not_regex"]},
+          {"field": "dofollow", "type": "boolean", "operators": ["=", "<>"]},
+          {"field": "is_new", "type": "boolean", "operators": ["=", "<>"]},
+          {"field": "is_lost", "type": "boolean", "operators": ["=", "<>"]}
+        ]
+      }
+    },
+    "business_data_business_listings_search": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "description": "{{description}}",
+        "total_count": 145,
+        "items": [
+          {
+            "title": "Example Coffee Shop",
+            "description": "Best coffee in town with artisan roasts and cozy atmosphere",
+            "category": "Coffee Shop",
+            "additional_categories": ["Cafe", "Bakery"],
+            "phone": "+1-555-0123",
+            "address": "123 Main St, New York, NY 10001",
+            "address_info": {
+              "street": "123 Main St",
+              "city": "New York",
+              "state": "NY",
+              "zip": "10001",
+              "country_code": "US"
+            },
+            "rating": {
+              "value": 4.6,
+              "votes_count": 245,
+              "rating_max": 5
+            },
+            "place_id": "ChIJexample123",
+            "url": "https://maps.google.com/?cid=12345678901234567890",
+            "domain": "examplecoffee.com",
+            "location_coordinate": {
+              "latitude": 40.7589,
+              "longitude": -73.9851
+            },
+            "is_claimed": true,
+            "working_hours": {
+              "monday": {"open": "07:00", "close": "19:00"},
+              "tuesday": {"open": "07:00", "close": "19:00"},
+              "wednesday": {"open": "07:00", "close": "19:00"},
+              "thursday": {"open": "07:00", "close": "19:00"},
+              "friday": {"open": "07:00", "close": "21:00"},
+              "saturday": {"open": "08:00", "close": "21:00"},
+              "sunday": {"open": "08:00", "close": "18:00"}
+            }
+          },
+          {
+            "title": "Tech Repair Store",
+            "description": "Professional electronics and computer repair services",
+            "category": "Electronics Repair Shop",
+            "additional_categories": ["Computer Store"],
+            "phone": "+1-555-0456",
+            "address": "456 Tech Ave, New York, NY 10002",
+            "address_info": {
+              "street": "456 Tech Ave",
+              "city": "New York",
+              "state": "NY",
+              "zip": "10002",
+              "country_code": "US"
+            },
+            "rating": {
+              "value": 4.8,
+              "votes_count": 189,
+              "rating_max": 5
+            },
+            "place_id": "ChIJexample456",
+            "url": "https://maps.google.com/?cid=98765432109876543210",
+            "domain": "techrepair.com",
+            "location_coordinate": {
+              "latitude": 40.7128,
+              "longitude": -74.0060
+            },
+            "is_claimed": true
+          }
+        ]
+      }
+    },
+    "domain_analytics_whois_overview": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "total_count": 1,
+        "items": [
+          {
+            "domain": "{{target}}",
+            "created_datetime": "2010-03-15T00:00:00Z",
+            "changed_datetime": "2024-11-20T00:00:00Z",
+            "expiration_datetime": "2026-03-15T00:00:00Z",
+            "updated_datetime": "2024-12-01T00:00:00Z",
+            "registrar": {
+              "name": "Example Registrar Inc.",
+              "organization": "Example Registrar Inc.",
+              "url": "https://www.exampleregistrar.com",
+              "abuse_email": "abuse@exampleregistrar.com",
+              "abuse_phone": "+1.5551234567"
+            },
+            "registrant": {
+              "name": "Privacy Service",
+              "organization": "Privacy Protected LLC",
+              "country": "US",
+              "state": "CA",
+              "city": "San Francisco"
+            },
+            "metrics": {
+              "organic": {
+                "etv": 456700.50,
+                "count": 2045,
+                "pos_1": 45
+              },
+              "paid": {
+                "etv": 12400.25,
+                "count": 89
+              }
+            },
+            "backlinks_info": {
+              "referring_domains": 1245,
+              "backlinks": 12450,
+              "rank": 68
+            }
+          }
+        ]
+      }
+    },
+    "domain_analytics_whois_available_filters": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "available_filters": [
+          {"field": "domain", "type": "string", "operators": ["=", "<>", "like", "not_like", "regex", "not_regex"]},
+          {"field": "created_datetime", "type": "date", "operators": ["=", "<>", "<", "<=", ">", ">="]},
+          {"field": "expiration_datetime", "type": "date", "operators": ["=", "<>", "<", "<=", ">", ">="]},
+          {"field": "metrics.organic.etv", "type": "float", "operators": ["=", "<>", "<", "<=", ">", ">="]},
+          {"field": "backlinks_info.rank", "type": "integer", "operators": ["=", "<>", "<", "<=", ">", ">="]}
+        ]
+      }
+    },
+    "domain_analytics_technologies_domain_technologies": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "target": "{{target}}",
+        "items": [
+          {
+            "category": "Web Servers",
+            "technologies": [
+              {
+                "name": "nginx",
+                "version": "1.24.0"
+              }
+            ]
+          },
+          {
+            "category": "JavaScript Frameworks",
+            "technologies": [
+              {
+                "name": "React",
+                "version": "18.2.0"
+              },
+              {
+                "name": "Next.js",
+                "version": "14.0.4"
+              }
+            ]
+          },
+          {
+            "category": "Analytics",
+            "technologies": [
+              {
+                "name": "Google Analytics",
+                "version": "GA4"
+              }
+            ]
+          },
+          {
+            "category": "CDN",
+            "technologies": [
+              {
+                "name": "Cloudflare",
+                "version": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "domain_analytics_technologies_available_filters": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "available_filters": [
+          {"field": "category", "type": "string", "operators": ["=", "<>", "in", "not_in"]},
+          {"field": "technologies.name", "type": "string", "operators": ["=", "<>", "like", "not_like", "in", "not_in"]}
+        ]
+      }
+    },
+    "content_analysis_search": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keyword": "{{keyword}}",
+        "total_count": 456,
+        "items": [
+          {
+            "type": "content_analysis_item",
+            "url": "https://example.com/article-about-topic",
+            "domain": "example.com",
+            "main_domain": "example.com",
+            "url_rank": 65,
+            "snippet": "This comprehensive guide covers {{keyword}} in detail, providing expert insights and practical examples.",
+            "title": "Complete Guide to {{keyword}}",
+            "description": "Everything you need to know about {{keyword}}",
+            "content_type": "article",
+            "word_count": 2450,
+            "sentiment_connotation": {
+              "positive": 0.72,
+              "negative": 0.08,
+              "neutral": 0.20
+            },
+            "connotation_types": {
+              "positive": 156,
+              "negative": 12,
+              "neutral": 45
+            },
+            "text_category": [245, 189, 98],
+            "date_published": "2024-11-20",
+            "timestamp": "2024-11-20T14:30:00Z"
+          },
+          {
+            "type": "content_analysis_item",
+            "url": "https://techblog.com/analysis",
+            "domain": "techblog.com",
+            "main_domain": "techblog.com",
+            "url_rank": 68,
+            "snippet": "An in-depth analysis of {{keyword}}, exploring its applications and benefits in modern contexts.",
+            "title": "{{keyword}}: An In-Depth Analysis",
+            "description": "Comprehensive analysis and review",
+            "content_type": "blog_post",
+            "word_count": 1890,
+            "sentiment_connotation": {
+              "positive": 0.65,
+              "negative": 0.15,
+              "neutral": 0.20
+            },
+            "connotation_types": {
+              "positive": 124,
+              "negative": 28,
+              "neutral": 38
+            },
+            "text_category": [198, 156, 76],
+            "date_published": "2024-12-05",
+            "timestamp": "2024-12-05T10:15:00Z"
+          }
+        ]
+      }
+    },
+    "content_analysis_summary": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keyword": "{{keyword}}",
+        "summary": {
+          "total_results": 456,
+          "total_citations": 1245,
+          "avg_sentiment": {
+            "positive": 0.68,
+            "negative": 0.12,
+            "neutral": 0.20
+          },
+          "top_domains": [
+            {"domain": "example.com", "citations": 245, "avg_sentiment": 0.75},
+            {"domain": "techblog.com", "citations": 189, "avg_sentiment": 0.68},
+            {"domain": "industry-news.org", "citations": 156, "avg_sentiment": 0.62}
+          ],
+          "content_types": {
+            "article": 245,
+            "blog_post": 189,
+            "news": 98,
+            "review": 67
+          },
+          "date_range": {
+            "earliest": "2023-06-15",
+            "latest": "2024-12-15"
+          }
+        }
+      }
+    },
+    "content_analysis_phrase_trends": {
+      "defaultResponse": {
+        "status_code": 20000,
+        "status_message": "Ok",
+        "keyword": "{{keyword}}",
+        "date_from": "{{date_from}}",
+        "date_to": "{{date_to}}",
+        "items": [
+          {
+            "date": "2024-12-01",
+            "citations": 145,
+            "avg_sentiment": {
+              "positive": 0.72,
+              "negative": 0.10,
+              "neutral": 0.18
+            }
+          },
+          {
+            "date": "2024-11-01",
+            "citations": 132,
+            "avg_sentiment": {
+              "positive": 0.68,
+              "negative": 0.12,
+              "neutral": 0.20
+            }
+          },
+          {
+            "date": "2024-10-01",
+            "citations": 128,
+            "avg_sentiment": {
+              "positive": 0.65,
+              "negative": 0.15,
+              "neutral": 0.20
+            }
+          }
+        ]
+      }
+    }
+  },
+  "fixtures": {
+    "ai_optimization_keyword_data_search_volume": [
+      {
+        "match": {"keywords": ["machine learning"]},
+        "response": {
+          "status_code": 20000,
+          "status_message": "Ok",
+          "results": [
+            {
+              "keyword": "machine learning",
+              "location_code": 2840,
+              "language_code": "en",
+              "ai_search_volume": 245600,
+              "ai_search_volume_trend": 18.5,
+              "monthly_searches": [
+                {"year": 2024, "month": 12, "search_volume": 245600},
+                {"year": 2024, "month": 11, "search_volume": 234500},
+                {"year": 2024, "month": 10, "search_volume": 228900}
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "match": {"keywords": ["seo optimization", "keyword research"]},
+        "response": {
+          "status_code": 20000,
+          "status_message": "Ok",
+          "results": [
+            {
+              "keyword": "seo optimization",
+              "location_code": 2840,
+              "language_code": "en",
+              "ai_search_volume": 67800,
+              "ai_search_volume_trend": 8.2,
+              "monthly_searches": [
+                {"year": 2024, "month": 12, "search_volume": 67800},
+                {"year": 2024, "month": 11, "search_volume": 65200}
+              ]
+            },
+            {
+              "keyword": "keyword research",
+              "location_code": 2840,
+              "language_code": "en",
+              "ai_search_volume": 45900,
+              "ai_search_volume_trend": 12.3,
+              "monthly_searches": [
+                {"year": 2024, "month": 12, "search_volume": 45900},
+                {"year": 2024, "month": 11, "search_volume": 42300}
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "serp_organic_live_advanced": [
+      {
+        "match": {"keyword": "python programming"},
+        "response": {
+          "status_code": 20000,
+          "status_message": "Ok",
+          "keyword": "python programming",
+          "location_code": 2840,
+          "language_code": "en",
+          "device": "desktop",
+          "se_results_count": "About 524,000,000 results",
+          "items_count": 10,
+          "items": [
+            {
+              "type": "organic",
+              "rank_group": 1,
+              "rank_absolute": 1,
+              "position": "left",
+              "url": "https://www.python.org/",
+              "domain": "python.org",
+              "title": "Welcome to Python.org",
+              "description": "The official home of the Python Programming Language. Download the latest version, explore documentation, and join the community.",
+              "breadcrumb": "https://www.python.org",
+              "timestamp": "2024-12-15T10:30:00Z"
+            },
+            {
+              "type": "organic",
+              "rank_group": 2,
+              "rank_absolute": 2,
+              "position": "left",
+              "url": "https://docs.python.org/3/tutorial/",
+              "domain": "python.org",
+              "title": "The Python Tutorial — Python 3.12.1 documentation",
+              "description": "Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming.",
+              "breadcrumb": "https://docs.python.org › 3 › tutorial",
+              "timestamp": "2024-12-14T18:20:00Z"
+            },
+            {
+              "type": "people_also_ask",
+              "rank_group": 3,
+              "rank_absolute": 3,
+              "items": [
+                {
+                  "type": "people_also_ask_element",
+                  "title": "Is Python good for beginners?",
+                  "url": "https://realpython.com/python-for-beginners",
+                  "domain": "realpython.com",
+                  "description": "Python is widely considered one of the best programming languages for beginners due to its simple syntax..."
+                },
+                {
+                  "type": "people_also_ask_element",
+                  "title": "What can you do with Python?",
+                  "url": "https://www.python.org/about/apps/",
+                  "domain": "python.org",
+                  "description": "Python is used in web development, data science, machine learning, automation, scientific computing..."
+                }
+              ]
+            },
+            {
+              "type": "organic",
+              "rank_group": 4,
+              "rank_absolute": 4,
+              "position": "left",
+              "url": "https://www.w3schools.com/python/",
+              "domain": "w3schools.com",
+              "title": "Python Tutorial - W3Schools",
+              "description": "Well organized and easy to understand Web building tutorials with lots of examples of how to use Python.",
+              "breadcrumb": "https://www.w3schools.com › python",
+              "timestamp": "2024-12-10T09:15:00Z"
+            }
+          ]
+        }
+      }
+    ],
+    "dataforseo_labs_google_ranked_keywords": [
+      {
+        "match": {"target": "moz.com"},
+        "response": {
+          "status_code": 20000,
+          "status_message": "Ok",
+          "target": "moz.com",
+          "location_code": 2840,
+          "language_code": "en",
+          "total_count": 45678,
+          "items": [
+            {
+              "keyword": "seo tools",
+              "keyword_data": {
+                "keyword": "seo tools",
+                "search_volume": 27100,
+                "competition": 0.89,
+                "cpc": 22.40
+              },
+              "ranked_serp_element": {
+                "serp_item": {
+                  "rank_group": 2,
+                  "rank_absolute": 2,
+                  "position": "left",
+                  "url": "https://moz.com/free-seo-tools",
+                  "domain": "moz.com"
+                }
+              },
+              "check_url": "https://www.google.com/search?q=seo+tools"
+            },
+            {
+              "keyword": "domain authority",
+              "keyword_data": {
+                "keyword": "domain authority",
+                "search_volume": 18900,
+                "competition": 0.76,
+                "cpc": 12.80
+              },
+              "ranked_serp_element": {
+                "serp_item": {
+                  "rank_group": 1,
+                  "rank_absolute": 1,
+                  "position": "left",
+                  "url": "https://moz.com/learn/seo/domain-authority",
+                  "domain": "moz.com"
+                }
+              },
+              "check_url": "https://www.google.com/search?q=domain+authority"
+            },
+            {
+              "keyword": "keyword research",
+              "keyword_data": {
+                "keyword": "keyword research",
+                "search_volume": 22400,
+                "competition": 0.82,
+                "cpc": 18.50
+              },
+              "ranked_serp_element": {
+                "serp_item": {
+                  "rank_group": 4,
+                  "rank_absolute": 4,
+                  "position": "left",
+                  "url": "https://moz.com/explorer",
+                  "domain": "moz.com"
+                }
+              },
+              "check_url": "https://www.google.com/search?q=keyword+research"
+            }
+          ]
+        }
+      }
+    ],
+    "backlinks_backlinks": [
+      {
+        "match": {"target": "moz.com"},
+        "response": {
+          "status_code": 20000,
+          "status_message": "Ok",
+          "target": "moz.com",
+          "mode": "as_is",
+          "total_count": 245678,
+          "items": [
+            {
+              "url_from": "https://searchengineland.com/seo-guide",
+              "url_to": "https://moz.com/beginners-guide-to-seo",
+              "domain_from": "searchengineland.com",
+              "domain_to": "moz.com",
+              "tld_from": "com",
+              "is_new": false,
+              "is_lost": false,
+              "backlink_spam_score": 1,
+              "rank": 82,
+              "page_from_rank": 78,
+              "domain_from_rank": 85,
+              "page_from_external_links": 234,
+              "domain_from_external_links": 45678,
+              "text_pre": "For comprehensive SEO education, check out",
+              "anchor": "Moz's Beginner Guide to SEO",
+              "text_post": "which covers all the fundamentals",
+              "first_seen": "2022-03-15",
+              "last_seen": "2024-12-15",
+              "dofollow": true,
+              "alt": null
+            },
+            {
+              "url_from": "https://www.semrush.com/blog/seo-tools/",
+              "url_to": "https://moz.com/",
+              "domain_from": "semrush.com",
+              "domain_to": "moz.com",
+              "tld_from": "com",
+              "is_new": false,
+              "is_lost": false,
+              "backlink_spam_score": 0,
+              "rank": 88,
+              "page_from_rank": 84,
+              "domain_from_rank": 91,
+              "page_from_external_links": 189,
+              "domain_from_external_links": 67890,
+              "text_pre": "Other popular SEO platforms include",
+              "anchor": "Moz",
+              "text_post": "and Ahrefs",
+              "first_seen": "2021-08-22",
+              "last_seen": "2024-12-14",
+              "dofollow": true,
+              "alt": null
+            }
+          ]
+        }
+      }
+    ],
+    "content_analysis_search": [
+      {
+        "match": {"keyword": "artificial intelligence"},
+        "response": {
+          "status_code": 20000,
+          "status_message": "Ok",
+          "keyword": "artificial intelligence",
+          "total_count": 1847,
+          "items": [
+            {
+              "type": "content_analysis_item",
+              "url": "https://www.ibm.com/topics/artificial-intelligence",
+              "domain": "ibm.com",
+              "main_domain": "ibm.com",
+              "url_rank": 82,
+              "snippet": "Artificial intelligence leverages computers and machines to mimic the problem-solving and decision-making capabilities of the human mind. IBM has been a leader in advancing AI-driven technologies for enterprises.",
+              "title": "What is Artificial Intelligence (AI)? | IBM",
+              "description": "Learn about artificial intelligence, how it works, and its applications across industries",
+              "content_type": "article",
+              "word_count": 3567,
+              "sentiment_connotation": {
+                "positive": 0.82,
+                "negative": 0.05,
+                "neutral": 0.13
+              },
+              "connotation_types": {
+                "positive": 412,
+                "negative": 18,
+                "neutral": 87
+              },
+              "text_category": [567, 234, 156],
+              "date_published": "2023-08-15",
+              "timestamp": "2024-11-20T14:30:00Z"
+            },
+            {
+              "type": "content_analysis_item",
+              "url": "https://news.mit.edu/topic/artificial-intelligence2",
+              "domain": "mit.edu",
+              "main_domain": "mit.edu",
+              "url_rank": 88,
+              "snippet": "MIT researchers continue to push the boundaries of artificial intelligence, developing new algorithms and approaches that advance machine learning, natural language processing, and robotics.",
+              "title": "Artificial Intelligence News - MIT News",
+              "description": "Latest research and breakthroughs in AI from MIT",
+              "content_type": "news",
+              "word_count": 4521,
+              "sentiment_connotation": {
+                "positive": 0.78,
+                "negative": 0.08,
+                "neutral": 0.14
+              },
+              "connotation_types": {
+                "positive": 523,
+                "negative": 34,
+                "neutral": 112
+              },
+              "text_category": [678, 289, 178],
+              "date_published": "2024-12-01",
+              "timestamp": "2024-12-01T09:15:00Z"
+            },
+            {
+              "type": "content_analysis_item",
+              "url": "https://www.nature.com/subjects/machine-learning",
+              "domain": "nature.com",
+              "main_domain": "nature.com",
+              "url_rank": 91,
+              "snippet": "Artificial intelligence and machine learning are transforming scientific research, enabling discoveries in fields from genomics to particle physics. Recent studies show remarkable progress in AI-driven drug discovery and climate modeling.",
+              "title": "Machine learning and AI - Nature",
+              "description": "Scientific publications on artificial intelligence and machine learning",
+              "content_type": "article",
+              "word_count": 5234,
+              "sentiment_connotation": {
+                "positive": 0.85,
+                "negative": 0.04,
+                "neutral": 0.11
+              },
+              "connotation_types": {
+                "positive": 645,
+                "negative": 21,
+                "neutral": 98
+              },
+              "text_category": [734, 312, 145],
+              "date_published": "2024-11-28",
+              "timestamp": "2024-11-28T16:45:00Z"
+            }
+          ]
+        }
+      },
+      {
+        "match": {"keyword": "climate change"},
+        "response": {
+          "status_code": 20000,
+          "status_message": "Ok",
+          "keyword": "climate change",
+          "total_count": 2345,
+          "items": [
+            {
+              "type": "content_analysis_item",
+              "url": "https://climate.nasa.gov/",
+              "domain": "nasa.gov",
+              "main_domain": "nasa.gov",
+              "url_rank": 95,
+              "snippet": "Climate change is the long-term alteration of temperature and typical weather patterns. NASA's observations show Earth's climate is now changing faster than at any point in modern civilization, primarily as a result of human activities.",
+              "title": "Climate Change: Vital Signs of the Planet | NASA",
+              "description": "NASA's authoritative resource on climate change and global warming",
+              "content_type": "article",
+              "word_count": 4892,
+              "sentiment_connotation": {
+                "positive": 0.32,
+                "negative": 0.45,
+                "neutral": 0.23
+              },
+              "connotation_types": {
+                "positive": 178,
+                "negative": 267,
+                "neutral": 134
+              },
+              "text_category": [456, 389, 234],
+              "date_published": "2024-12-10",
+              "timestamp": "2024-12-10T11:20:00Z"
+            },
+            {
+              "type": "content_analysis_item",
+              "url": "https://www.ipcc.ch/reports/",
+              "domain": "ipcc.ch",
+              "main_domain": "ipcc.ch",
+              "url_rank": 89,
+              "snippet": "The IPCC provides regular assessments of climate change, its implications and potential future risks, as well as adaptation and mitigation options. Recent reports emphasize the urgency of immediate action to limit global warming.",
+              "title": "IPCC Reports on Climate Change",
+              "description": "Comprehensive scientific assessments on climate change",
+              "content_type": "report",
+              "word_count": 6234,
+              "sentiment_connotation": {
+                "positive": 0.28,
+                "negative": 0.52,
+                "neutral": 0.20
+              },
+              "connotation_types": {
+                "positive": 189,
+                "negative": 345,
+                "neutral": 156
+              },
+              "text_category": [567, 445, 289],
+              "date_published": "2024-10-15",
+              "timestamp": "2024-10-15T14:00:00Z"
+            }
+          ]
+        }
+      }
+    ],
+    "content_analysis_summary": [
+      {
+        "match": {"keyword": "artificial intelligence"},
+        "response": {
+          "status_code": 20000,
+          "status_message": "Ok",
+          "keyword": "artificial intelligence",
+          "summary": {
+            "total_results": 1847,
+            "total_citations": 4523,
+            "avg_sentiment": {
+              "positive": 0.81,
+              "negative": 0.06,
+              "neutral": 0.13
+            },
+            "top_domains": [
+              {"domain": "ibm.com", "citations": 412, "avg_sentiment": 0.82},
+              {"domain": "mit.edu", "citations": 389, "avg_sentiment": 0.78},
+              {"domain": "nature.com", "citations": 356, "avg_sentiment": 0.85},
+              {"domain": "openai.com", "citations": 334, "avg_sentiment": 0.79},
+              {"domain": "deepmind.com", "citations": 298, "avg_sentiment": 0.83}
+            ],
+            "content_types": {
+              "article": 1245,
+              "blog_post": 456,
+              "news": 389,
+              "research_paper": 267,
+              "review": 145
+            },
+            "date_range": {
+              "earliest": "2022-01-15",
+              "latest": "2024-12-15"
+            }
+          }
+        }
+      },
+      {
+        "match": {"keyword": "climate change"},
+        "response": {
+          "status_code": 20000,
+          "status_message": "Ok",
+          "keyword": "climate change",
+          "summary": {
+            "total_results": 2345,
+            "total_citations": 6789,
+            "avg_sentiment": {
+              "positive": 0.30,
+              "negative": 0.48,
+              "neutral": 0.22
+            },
+            "top_domains": [
+              {"domain": "nasa.gov", "citations": 678, "avg_sentiment": 0.32},
+              {"domain": "ipcc.ch", "citations": 567, "avg_sentiment": 0.28},
+              {"domain": "noaa.gov", "citations": 456, "avg_sentiment": 0.31},
+              {"domain": "scientificamerican.com", "citations": 389, "avg_sentiment": 0.29},
+              {"domain": "nature.com", "citations": 345, "avg_sentiment": 0.33}
+            ],
+            "content_types": {
+              "article": 1567,
+              "news": 678,
+              "report": 456,
+              "blog_post": 289,
+              "research_paper": 234
+            },
+            "date_range": {
+              "earliest": "2020-03-20",
+              "latest": "2024-12-15"
+            }
+          }
+        }
+      }
+    ],
+    "content_analysis_phrase_trends": [
+      {
+        "match": {"keyword": "artificial intelligence"},
+        "response": {
+          "status_code": 20000,
+          "status_message": "Ok",
+          "keyword": "artificial intelligence",
+          "date_from": "2024-10-01",
+          "date_to": "2024-12-01",
+          "items": [
+            {
+              "date": "2024-12-01",
+              "citations": 423,
+              "avg_sentiment": {
+                "positive": 0.82,
+                "negative": 0.06,
+                "neutral": 0.12
+              }
+            },
+            {
+              "date": "2024-11-01",
+              "citations": 389,
+              "avg_sentiment": {
+                "positive": 0.79,
+                "negative": 0.07,
+                "neutral": 0.14
+              }
+            },
+            {
+              "date": "2024-10-01",
+              "citations": 356,
+              "avg_sentiment": {
+                "positive": 0.77,
+                "negative": 0.08,
+                "neutral": 0.15
+              }
+            }
+          ]
+        }
+      },
+      {
+        "match": {"keyword": "climate change"},
+        "response": {
+          "status_code": 20000,
+          "status_message": "Ok",
+          "keyword": "climate change",
+          "date_from": "2024-10-01",
+          "date_to": "2024-12-01",
+          "items": [
+            {
+              "date": "2024-12-01",
+              "citations": 678,
+              "avg_sentiment": {
+                "positive": 0.31,
+                "negative": 0.47,
+                "neutral": 0.22
+              }
+            },
+            {
+              "date": "2024-11-01",
+              "citations": 634,
+              "avg_sentiment": {
+                "positive": 0.29,
+                "negative": 0.49,
+                "neutral": 0.22
+              }
+            },
+            {
+              "date": "2024-10-01",
+              "citations": 589,
+              "avg_sentiment": {
+                "positive": 0.30,
+                "negative": 0.48,
+                "neutral": 0.22
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
